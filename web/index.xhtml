@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:dataGrid var="filmes" value="#{dataGridView.filmes}" columns="3" layout="grid" rows="12" paginator="true" id="filmes" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="6,12,16">
+
+                <f:facet name="header">
+                </f:facet>
+
+                <p:panel header="#{filmes.id}" id="p_panelid">
+                    <h:panelGrid columns="1" style="width:100%">
+
+                        <h:outputText value="#{filmes.classificacao}" />
+
+                        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="#{filmes}" target="#{dataGridView.selectedFilmes}" />
+                        </p:commandLink>
+                    </h:panelGrid>
+                </p:panel>
+
+            </p:dataGrid>
+
+            <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedFilmes}" columnClasses="label,value">
+                        <f:facet name="header">
+                        </f:facet>
+
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{dataGridView.selectedFilmes.id}" />
+
+                        <h:outputText value="Nome" />
+                        <h:outputText value="#{dataGridView.selectedFilmes.nome}" />
+
+                        <h:outputText value="duracao:" />
+                        <h:outputText value="#{dataGridView.selectedFilmes.duracao}" />
+
+                        <h:outputText value="Classificacao" />
+                        <h:outputText value="$#{dataGridView.selectedFilmes.classificacao}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+
