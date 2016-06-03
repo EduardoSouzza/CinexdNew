@@ -17,7 +17,7 @@ Nome VARCHAR(254),
 Diretor VARCHAR(254),
 Elenco VARCHAR(254),
 Classificacao INTEGER,
-Sinopse VARCHAR(254),
+Sinopse VARCHAR(5000),
 Duracao INTEGER,
 DataLancamento VARCHAR(254),
 Genero VARCHAR(254)
@@ -27,7 +27,8 @@ CREATE TABLE Cinema (
 id_cinema INTEGER PRIMARY KEY,
 Nome VARCHAR(254),
 Endereco VARCHAR(254),
-Cidade VARCHAR(254)
+Cidade VARCHAR(254),
+Telefone varchar(254)
 )
 
 CREATE TABLE Ingresso (
