@@ -59,6 +59,19 @@ Senha VARCHAR(254),
 Email VARCHAR(254)
 )
 
+Create TABLE Perfil_cliente(
+id_perfil  INTEGER PRIMARY KEY,
+id_cliente INTEGER,
+Acao INTEGER,
+Terror INTEGER,
+Suspense INTEGER,
+Animacao INTEGER,
+Documentario INTEGER,
+Comedia INTEGER,
+Romance INTEGER,
+FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente))
+
+
 CREATE TABLE Salas (
 id_sala INTEGER PRIMARY KEY,
 id_cinema INTEGER,

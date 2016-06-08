@@ -14,8 +14,7 @@ public class Filmes {
         private String generos;
         private Perfil_Filme perfil;
 
-    public Filmes(int id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, String dataLancamento, String generos, Perfil_Filme perfil) {
-        this.id = id;
+    public Filmes(int id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, String dataLancamento, String generos){
         this.nome = nome;
         this.elenco = elenco;
         this.diretor = diretor;
@@ -125,6 +124,20 @@ public class Filmes {
      */
     public void setDataLancamento(String dataLancamento) {
         this.dataLancamento = dataLancamento;
+    }
+
+    /**
+     * @return the perfil
+     */
+    public Perfil_Filme getPerfil() {
+        return perfil;
+    }
+
+    /**
+     * @param perfil the perfil to set
+     */
+    public void setPerfil(Perfil_Filme perfil) {
+        this.perfil = perfil;
     }
     
 }

@@ -1,9 +1,11 @@
 package Service;
 
 import classes.Filmes;
+import classes.Perfil_Filme;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -34,17 +36,19 @@ public class FilmeService {
     public List<Filmes> createFilmes(int size) {
         List<Filmes> list = new ArrayList<Filmes>();
         for (int i = 0; i < size; i++) {
+            Perfil_Filme perfil = new Perfil_Filme();
             list.add(new Filmes(getRandomId(), getRandomNome(), getRandomElenco(),
                     getRandomDiretor(), getClassificao(), getRandomSinopse(),
-                    getRandomDuracao(), generatorData(), getGeneros()));
+                    getRandomDuracao(), generatorData(), getGeneros() /*perfil*/));
             System.out.println("id = " + list.get(i).getId());
         }
 
         return list;
     }
 
-    private String getRandomId() {
-        String id = UUID.randomUUID().toString().substring(0, 8);
+    private int getRandomId() {
+        Random rand = new Random();
+        int id = rand.nextInt();
         return id;
     }
 
@@ -81,8 +85,8 @@ public class FilmeService {
         return classificacao[1];
     }
 
-    public Calendar generatorData() {
-        Calendar c = Calendar.getInstance();
+    public String generatorData() {
+        String c = Calendar.getInstance().toString();
         return c;
     }
 }
