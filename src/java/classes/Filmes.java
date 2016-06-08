@@ -3,17 +3,18 @@ package classes;
 import java.util.Calendar;
 
 public class Filmes {
-    public String id;
-        public String nome;
-        public String elenco;
-        public String diretor;
-        public String classificacao;
-        public String sinopse;
-        public String duracao;
-        public Calendar dataLancamento;
-        public String generos;
+    private int id;
+        private String nome;
+        private String elenco;
+        private String diretor;
+        private String classificacao;
+        private String sinopse;
+        private String duracao;
+        private String dataLancamento;
+        private String generos;
+        private Perfil_Filme perfil;
 
-    public Filmes(String id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, Calendar dataLancamento, String generos) {
+    public Filmes(int id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, String dataLancamento, String generos, Perfil_Filme perfil) {
         this.id = id;
         this.nome = nome;
         this.elenco = elenco;
@@ -23,15 +24,23 @@ public class Filmes {
         this.duracao = duracao;
         this.dataLancamento = dataLancamento;
         this.generos = generos;
+        this.perfil = perfil;
+    }
+    
+    public Filmes(){
+        this.id = 0;
+        this.nome = null;
+        this.elenco = null;
+        this.diretor = null;
+        this.classificacao = null;
+        this.sinopse = null;
+        this.duracao = null;
+        this.dataLancamento = null;
+        this.generos = null;
+        this.perfil = null;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    
 
     public String getNome() {
         return nome;
@@ -82,20 +91,40 @@ public class Filmes {
     }
 
 
-    public Calendar getDataLancamento() {
-        return dataLancamento;
-    }
-
-    public void setDataLancamento(Calendar dataLancamento) {
-        this.dataLancamento = dataLancamento;
-    }
-
     public String getGeneros() {
         return generos;
     }
 
     public void setGeneros(String generos) {
         this.generos = generos;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the dataLancamento
+     */
+    public String getDataLancamento() {
+        return dataLancamento;
+    }
+
+    /**
+     * @param dataLancamento the dataLancamento to set
+     */
+    public void setDataLancamento(String dataLancamento) {
+        this.dataLancamento = dataLancamento;
     }
     
 }
