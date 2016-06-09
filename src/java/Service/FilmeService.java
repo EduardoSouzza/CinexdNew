@@ -1,7 +1,7 @@
 package Service;
 
 import classes.Filmes;
-import classes.Perfil_Filme;
+import classes.PerfilFilme;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -36,7 +36,7 @@ public class FilmeService {
     public List<Filmes> createFilmes(int size) {
         List<Filmes> list = new ArrayList<Filmes>();
         for (int i = 0; i < size; i++) {
-            Perfil_Filme perfil = new Perfil_Filme();
+            PerfilFilme perfil = new PerfilFilme();
             list.add(new Filmes(getRandomId(), getRandomNome(), getRandomElenco(),
                     getRandomDiretor(), getClassificao(), getRandomSinopse(),
                     getRandomDuracao(), generatorData(), getGeneros() /*perfil*/));

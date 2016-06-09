@@ -12,7 +12,7 @@ public class Filmes {
         private String duracao;
         private String dataLancamento;
         private String generos;
-        private Perfil_Filme perfil;
+        private PerfilFilme perfil;
 
     public Filmes(int id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, String dataLancamento, String generos){
         this.nome = nome;
@@ -129,14 +129,14 @@ public class Filmes {
     /**
      * @return the perfil
      */
-    public Perfil_Filme getPerfil() {
+    public PerfilFilme getPerfil() {
         return perfil;
     }
 
     /**
      * @param perfil the perfil to set
      */
-    public void setPerfil(Perfil_Filme perfil) {
+    public void setPerfil(PerfilFilme perfil) {
         this.perfil = perfil;
     }
     

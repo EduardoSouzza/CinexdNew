@@ -9,7 +9,7 @@ package classes;
  *
  * @author usuario
  */
-public class Perfil_cliente {
+public class PerfilCliente {
     
     private double acao;
     private double terror;

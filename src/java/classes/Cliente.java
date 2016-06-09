@@ -15,7 +15,7 @@ public class Cliente {
     private String Nome;
     private String Senha;
     private String Email;
-    private Perfil_cliente perfil;
+    private PerfilCliente perfil;
 
     /**
      * @return the id_cliente
@@ -76,14 +76,14 @@ public class Cliente {
     /**
      * @return the perfil
      */
-    public Perfil_cliente getPerfil() {
+    public PerfilCliente getPerfil() {
         return perfil;
     }
 
     /**
      * @param perfil the perfil to set
      */
-    public void setPerfil(Perfil_cliente perfil) {
+    public void setPerfil(PerfilCliente perfil) {
         this.perfil = perfil;
     }
 
