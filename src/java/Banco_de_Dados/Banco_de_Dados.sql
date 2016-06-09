@@ -48,10 +48,13 @@ FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente)
 )
 
 CREATE TABLE Produto (
-id_produtro  INTEGER PRIMARY KEY,
-Nome VARCHAR(254),
-Valor DECIMAL
+id_produto  INTEGER PRIMARY KEY,
+NomeProduto VARCHAR(254),
+TipoProduto VARCHAR(254),
+PrecoProduto DECIMAL,
+QtdProduto INTEGER
 )
+
 
 CREATE TABLE Cliente (
 id_cliente INTEGER PRIMARY KEY,
@@ -97,8 +100,8 @@ FOREIGN KEY(id_engresso) REFERENCES Ingresso (id_engresso)
 
 CREATE TABLE Compras_Produto (
 id_compras INTEGER,
-id_produtro  INTEGER,
+id_produto  INTEGER,
 Quantidade INTEGER,
 FOREIGN KEY(id_compras) REFERENCES Compras (id_compras),
-FOREIGN KEY(id_produtro ) REFERENCES Produto (id_produtro)
+FOREIGN KEY(id_produtro ) REFERENCES Produto (id_produto)
 )
