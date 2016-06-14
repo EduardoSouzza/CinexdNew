@@ -10,6 +10,8 @@ import DAO.CrudProduto;
 import classes.Produto;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -19,8 +21,8 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class BeanProduto implements Serializable{
-    
+public class BeanProduto implements Serializable {
+
     Produto produto;
 
     public Produto getProduto() {
@@ -30,20 +32,38 @@ public class BeanProduto implements Serializable{
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-   
-    public String inserir(ActionEvent actionEvent){
+
+    public String inserir(ActionEvent actionEvent) {
         Crud dao = new CrudProduto();
         dao.inserir(produto);
         return "index";
     }
-    
-    public String remover(ActionEvent actionEvent){
+
+    public String remover(ActionEvent actionEvent) {
         Crud dao = new CrudProduto();
-        dao.remover(produto);
+        dao.remover(produto.getIdProduto());
         return "index";
     }
+
+    public List<Produto> listar() {
+        Crud dao = new CrudProduto();
+        List<Produto> l = new ArrayList();
+        l = dao.lista();
+        return l;
+    }
+
+    public String alterar(ActionEvent actionEvent) {
+        Crud dao = new CrudProduto();
+        dao.alterar(produto);
+        return "index";
+    }
+
+    public String prepararAlterarProduto(ActionEvent actionEvent) {
+        produto = new Produto();
+        return "AlterarProduto";
+    }
     
-    public void prepararProduto(ActionEvent actionEvent){
+    public void prepararProduto(ActionEvent actionEvent) {
         produto = new Produto();
     }
 

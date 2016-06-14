@@ -48,7 +48,7 @@ FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente)
 )
 
 CREATE TABLE Produto (
-id_produto  INTEGER PRIMARY KEY,
+idProduto  INTEGER PRIMARY KEY,
 NomeProduto VARCHAR(254),
 TipoProduto VARCHAR(254),
 PrecoProduto DECIMAL,

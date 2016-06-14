@@ -11,6 +11,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+
+
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.
@@ -20,28 +22,26 @@ import org.hibernate.SessionFactory;
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
-
+    
     static {
         try {
-            //sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
             sessionFactory = (SessionFactory) new AnnotationConfiguration.StdConfiguration(AnnotationInclusion.DONT_INCLUDE);
-
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
-
+    
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-
-    public static void close(Session session) {
+    
+    public static void close(Session session){
         if (session != null) {
-            try {
+            try{
                 session.close();
-            } catch (HibernateException h) {
+            } catch(HibernateException h){
                 System.out.println("Não fechou.");
                 h.printStackTrace();
             }

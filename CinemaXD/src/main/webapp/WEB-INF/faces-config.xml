@@ -6,8 +6,7 @@
     <managed-bean>
         <managed-bean-name>beanProd</managed-bean-name>
         <managed-bean-class>Bean.BeanProduto</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope>
-            
+        <managed-bean-scope>application</managed-bean-scope> 
     </managed-bean>
     
     <navigation-rule>
@@ -16,5 +15,19 @@
             <to-view-id>/CrudProduto.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <managed-bean>
+        <managed-bean-name>beanCombo</managed-bean-name>
+        <managed-bean-class>Bean.BeanCombo</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope> 
+    </managed-bean>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>montarCombo</from-outcome>
+            <to-view-id>/MontarCombo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+        
     
 </faces-config>
