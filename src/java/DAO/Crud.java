@@ -14,11 +14,11 @@ import java.util.List;
 public interface Crud<T> {
     public void inserir(T entity);
     
-    public void alterar(T entity);
+    public void alterar(Object p);
     
-    public void remover(T entity);
+    public void remover(int id);
     
-    public List<T> list();
+    public List<T> lista();
     
     public T findById(int id);
 }

@@ -6,6 +6,7 @@
 package classes;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,10 +19,15 @@ import javax.persistence.Id;
 public class Produto implements Serializable{
     @Id
     @GeneratedValue
+    @Column(name="idProduto")
     private int idProduto;
+    @Column(name="nomeProduto")
     private String nomeProduto;
+    @Column(name="tipoProduto")
     private String tipoProduto;
+    @Column(name="precoProduto")
     private double precoProduto;
+    @Column(name="qtdProduto")
     private int qtdProduto;
 
     public Produto(int idProduto, String nomeProduto, String tipoProduto, double precoProduto, int qtdProduto) {
@@ -74,5 +80,9 @@ public class Produto implements Serializable{
 
     public void setQtdProduto(int qtdProduto) {
         this.qtdProduto = qtdProduto;
+    }
+    
+    public String toString(){
+        return "ID: " + this.idProduto + " Nome: " + this.nomeProduto;
     }
 }

@@ -5,9 +5,8 @@
  */
 package DAO;
 
-import classes.Produto;
+import classes.Combo;
 import java.util.List;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -15,14 +14,14 @@ import org.hibernate.Transaction;
  *
  * @author Rodrigo Kuya
  */
-public class CrudProduto implements Crud {
+public class CrudCombo implements Crud {
 
     @Override
-    public void inserir(Object p) {
+    public void inserir(Object c) {
         Session ss = HibernateUtil.getSessionFactory().openSession();
         Transaction ts = ss.beginTransaction();
         try {
-            ss.save((Produto) p);
+            ss.save((Combo) c);
             ts.commit();
         } catch (Exception ex) {
             ts.rollback();
@@ -34,22 +33,7 @@ public class CrudProduto implements Crud {
 
     @Override
     public void alterar(Object p) {
-        Transaction ts = null;
-        Session ss = HibernateUtil.getSessionFactory().openSession();
-        try {
-            ts = ss.beginTransaction();
-            ss.update((Produto) p);
-            ss.getTransaction().commit();
-            //ss.createQuery("UPDATE produto SET nomeProduto,tipoProduto,precoProduto,qtdProduto WHERE idProduto =" + id).executeUpdate();
-            //ts.commit();
-        } catch (Exception ex) {
-            if (ts != null) {
-                ts.rollback();
-            }
-            throw ex;
-        } finally {
-            HibernateUtil.close(ss);
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -57,7 +41,7 @@ public class CrudProduto implements Crud {
         Session ss = HibernateUtil.getSessionFactory().openSession();
         Transaction ts = ss.beginTransaction();
         try {
-            ss.createQuery("DELETE FROM produto WHERE idProduto =" + id).executeUpdate();
+            ss.createQuery("DELETE FROM combo WHERE idCombo =" + id).executeUpdate();
             ts.commit();
         } catch (Exception ex) {
             ts.rollback();
@@ -69,16 +53,13 @@ public class CrudProduto implements Crud {
 
     @Override
     public List lista() {
-        //Session ss = HibernateUtil.getSessionFactory().openSession();
-        //Transaction ts = ss.beginTransaction();
-
         Transaction ts = null;
         Session ss = HibernateUtil.getSessionFactory().openSession();
         try {
             /*Query q = ss.createQuery("SELECT idProduto,nomeProduto FROM produto");
             List listar = q.list();*/
             ts = ss.beginTransaction();
-            List listar = ss.createQuery("FROM produto").list();
+            List listar = ss.createQuery("FROM combo").list();
             ss.getTransaction().commit();
             //ts.commit();
             return listar;
@@ -92,9 +73,7 @@ public class CrudProduto implements Crud {
 
     @Override
     public Object findById(int id) {
-        Session ss = HibernateUtil.getSessionFactory().openSession();
-        Transaction ts = ss.beginTransaction();
-        return ss.createQuery("SELECT idProduto from produto WHERE idProduto = id");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
