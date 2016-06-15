@@ -1,4 +1,4 @@
-package Recomendação_de_Filmes;
+package RecomendacaoFilmes;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
