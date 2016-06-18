@@ -139,13 +139,10 @@ public class ConectaBanco {
 
     public static void updateFilme(String nomeFilme) throws ClassNotFoundException, SQLException {
         Filmes fm = selectFilme(nomeFilme);
-        
+
         //precisar da o set nos campos necessarios
         //Examplo abaixo
         //fm.setNome("Eduardo");
-        
-        
-        
         try {
             Connection c = ConectaBanco.conectaBanco();
             PreparedStatement p = c.prepareStatement("update filme set nome = ?, diretor = ?,"
@@ -189,5 +186,28 @@ public class ConectaBanco {
         }
 
         return fm;
+    }
+
+    public static ArrayList<Filmes> selectAllFilmes() throws ClassNotFoundException, SQLException {
+
+        Connection c = ConectaBanco.conectaBanco();
+        PreparedStatement p = c.prepareStatement("SELECT * FROM filme");
+        ResultSet rs = p.executeQuery();
+        ArrayList<Filmes> filmes = new ArrayList<Filmes>();
+        while (rs.next()) {
+            Filmes fm = new Filmes();
+            fm.setId(Integer.parseInt(rs.getString("id_filme")));
+            fm.setNome(rs.getString("nome"));
+            fm.setDiretor(rs.getString("diretor"));
+            fm.setElenco(rs.getString("elenco"));
+            fm.setClassificacao(rs.getString("classificacao"));
+            fm.setSinopse(rs.getString("sinopse"));
+            fm.setDuracao(rs.getString("duracao"));
+            fm.setDataLancamento(rs.getString("datalancamento"));
+            fm.setGeneros(rs.getString("genero"));
+            filmes.add(fm);
+        }
+
+        return filmes;
     }
 }
