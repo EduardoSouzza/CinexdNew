@@ -86,7 +86,7 @@ public class FilmeService {
     }
 
     public String generatorData() {
-        String c = Calendar.getInstance().toString();
+        String c = Calendar.getInstance().getTime().toString();
         return c;
     }
 }

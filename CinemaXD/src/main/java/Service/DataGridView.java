@@ -1,5 +1,6 @@
 package Service;
 
+import RecomendacaoFilmes.ConectaBanco;
 import classes.Filmes;
 import java.io.Serializable;
 import java.util.List;
@@ -22,6 +23,12 @@ public class DataGridView implements Serializable {
     @PostConstruct
     public void init() {
         filmes = service.createFilmes(48);
+
+        try {
+            ConectaBanco.createFilmes(filmes.get(0));
+        } catch (Exception e) {
+        }
+
     }
 
     public List<Filmes> getFilmes() {
