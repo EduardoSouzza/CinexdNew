@@ -26,6 +26,9 @@ public class DataGridView implements Serializable {
 
         try {
            // ConectaBanco.createFilmes(filmes.get(0));
+           //ConectaBanco.deleteFilme(2);
+           //ConectaBanco.updateFilme("Filme novo3");
+           //ConectaBanco.selectFilme("Nome do filme");
         } catch (Exception e) {
         }
 
