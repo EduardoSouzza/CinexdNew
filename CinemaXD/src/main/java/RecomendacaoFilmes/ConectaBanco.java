@@ -26,13 +26,13 @@ public class ConectaBanco {
     protected static Connection conectaBanco() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinexd", "postgres", "utfpr");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "utfpr");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }
     }
 
-    public List<Filmes> listAll() throws ClassNotFoundException, SQLException {
+    public static List<Filmes> listAll() throws ClassNotFoundException, SQLException {
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("select * from Filme");
         ResultSet r = p.executeQuery();

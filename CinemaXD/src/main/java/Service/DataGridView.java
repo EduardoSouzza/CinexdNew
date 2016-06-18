@@ -25,7 +25,7 @@ public class DataGridView implements Serializable {
         filmes = service.createFilmes(48);
 
         try {
-            ConectaBanco.createFilmes(filmes.get(0));
+           // ConectaBanco.createFilmes(filmes.get(0));
         } catch (Exception e) {
         }
 
