@@ -97,7 +97,7 @@ FOREIGN KEY(id_engresso) REFERENCES Ingresso (id_engresso)
 )
 
 CREATE TABLE Compras_Produto (
-id_compras BIGSERIAL,
+id_compras INTEGER,
 id_produto  INTEGER,
 Quantidade INTEGER,
 FOREIGN KEY(id_compras) REFERENCES Compras (id_compras),
