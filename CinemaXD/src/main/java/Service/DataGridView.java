@@ -1,6 +1,7 @@
 package Service;
 
 import RecomendacaoFilmes.ConectaBanco;
+import static RecomendacaoFilmes.ConectaBanco.selectFilme;
 import classes.Filmes;
 import java.io.Serializable;
 import java.util.List;
@@ -22,13 +23,21 @@ public class DataGridView implements Serializable {
 
     @PostConstruct
     public void init() {
-        filmes = service.createFilmes(48);
+        //filmes = service.createFilmes(48);
 
         try {
-           // ConectaBanco.createFilmes(filmes.get(0));
-           //ConectaBanco.deleteFilme(2);
-           //ConectaBanco.updateFilme("Filme novo3");
-           //ConectaBanco.selectFilme("Nome do filme");
+            // ConectaBanco.createFilmes(filmes.get(0));
+            //ConectaBanco.deleteFilme(2);
+            //ConectaBanco.updateFilme("Filme novo3");
+            //ConectaBanco.selectFilme("Nome do filme");
+            filmes = ConectaBanco.selectAllFilmes();
+
+            /*Filmes nFilme = selectFilme("Marcleo");
+            nFilme.setDiretor("novo diretor");
+            
+            ConectaBanco.updateFilme(nFilme);*/
+
+            System.out.println(filmes);
         } catch (Exception e) {
         }
 

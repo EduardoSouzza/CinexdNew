@@ -15,35 +15,35 @@
             <div class="cad-center">
                 <h:panelGrid columns="3">
                     <h:outputLabel class="txt-input" value="Nome:"/>
-                    <h:inputText id="nome" class="c-input" size="20" />
+                    <h:inputText id="nome" class="c-input" value="#{crFilmes.fm.nome}" size="20" />
                     <h:message for="nome" />
 
                     <h:outputLabel class="txt-input" value="Diretor:"/>
-                    <h:inputText id="diretor" class="c-input" size="20"  />
+                    <h:inputText id="diretor" class="c-input" value="#{crFilmes.fm.diretor}" size="20"  />
                     <h:message for="diretor" />
 
                     <h:outputLabel class="txt-input" value="Elenco:"/>
-                    <h:inputText id="nro" class="c-input" size="20" />
+                    <h:inputText id="nro" class="c-input" value="#{crFilmes.fm.elenco}" size="20" />
                     <h:message for="elenco" />
 
                     <h:outputLabel class="txt-input" value="Classificação:"/>
-                    <h:inputText id="mun" class="c-input" size="20" />
+                    <h:inputText id="mun" class="c-input" value="#{crFilmes.fm.classificacao}" size="20" />
                     <h:message for="classif" />
 
                     <h:outputLabel class="txt-input" value="Duraçao:"/>
-                    <h:inputText id="duracao" class="c-input" size="20" />
+                    <h:inputText id="duracao" class="c-input" value="#{crFilmes.fm.duracao}" size="20" />
                     <h:message for="dur" />
 
                     <h:outputLabel class="txt-input" value="Data de Lançamento"/>
-                    <h:inputText id="dtLacamento" class="c-input" size="20" />
+                    <h:inputText id="dtLacamento" class="c-input" value="#{crFilmes.fm.dataLancamento}" size="20" />
                     <h:message for="dtLanc" />
 
                     <h:outputLabel class="txt-input" value="Gênero"/>
-                    <h:inputText id="genero" class="c-input" size="20" />
+                    <h:inputText id="genero" class="c-input" size="20" value="#{crFilmes.fm.generos}" />
                     <h:message for="gen" />
                     
                     <h:outputLabel class="txt-input" value="Sinopse"/>
-                    <p:inputTextarea rows="6" cols="33"/>
+                    <p:inputTextarea rows="6" cols="33" value="#{crFilmes.fm.sinopse}" />
                     <h:message for="sinopse" />
 
                 </h:panelGrid>
@@ -133,7 +133,7 @@
                         <f:selectItem itemLabel="5" itemValue="5" />
                     </p:selectOneRadio>
 
-                    <h:commandButton id="btnE" class="bt-padrao" value="Cadastrar" />
+                    <h:commandButton id="btnE" class="bt-padrao" value="Cadastrar" action="#{crFilmes.inserir(e)}" />
                     <h:commandButton id="btnL" class="bt-padrao" value="Limpar"/>
                 </h:panelGrid>
 

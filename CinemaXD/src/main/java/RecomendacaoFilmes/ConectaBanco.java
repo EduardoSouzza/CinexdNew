@@ -26,7 +26,7 @@ public class ConectaBanco {
     protected static Connection conectaBanco() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "123");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinexd", "postgres", "utfpr");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }
@@ -137,27 +137,22 @@ public class ConectaBanco {
         }
     }
 
-    public static void updateFilme(String nomeFilme) throws ClassNotFoundException, SQLException {
-        Filmes fm = selectFilme(nomeFilme);
-
-        //precisar da o set nos campos necessarios
-        //Examplo abaixo
-        //fm.setNome("Eduardo");
+    public static void updateFilme(Filmes fm) throws ClassNotFoundException, SQLException {
+       
         try {
             Connection c = ConectaBanco.conectaBanco();
-            PreparedStatement p = c.prepareStatement("update filme set nome = ?, diretor = ?,"
+            PreparedStatement p = c.prepareStatement("update filme set diretor = ?,"
                     + "                              elenco = ?, classificacao = ?, sinopse = ?, duracao = ?,"
                     + "                              datalancamento = ?, genero = ? where id_filme = ?");
 
-            p.setString(1, fm.getNome());
-            p.setString(2, fm.getDiretor());
-            p.setString(3, fm.getElenco());
-            p.setInt(4, 0);
-            p.setString(5, fm.getSinopse());
-            p.setInt(6, 0);
-            p.setString(7, fm.getDataLancamento());
-            p.setString(8, fm.getGeneros());
-            p.setInt(9, fm.getId());
+            p.setString(1, fm.getDiretor());
+            p.setString(2, fm.getElenco());
+            p.setInt(3, 0);
+            p.setString(4, fm.getSinopse());
+            p.setInt(5, 0);
+            p.setString(6, fm.getDataLancamento());
+            p.setString(7, fm.getGeneros());
+            p.setInt(8, fm.getId());
             p.executeUpdate();
             System.out.println("passou");
         } catch (Exception e) {
