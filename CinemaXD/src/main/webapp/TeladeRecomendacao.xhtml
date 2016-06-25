@@ -9,33 +9,22 @@
     </h:head>
     <h:body>
         <h:form id="form"> 
-             <h:selectOneRadio value="">
-                 <f:selectItems value="#{jSFFilmes.ALL}"
-                               var="cid"
-                               itemLabel="#{cid.nome}"
-                               itemValue="#{cid.codigo}"
-                               />
-            </h:selectOneRadio>
-            
-
             <h3>Lista de Filmes Recomendados</h3>
-            
-            
+            <p:accordionPanel value="#{jSFFilmes.ALL}" var="fms">
+                <p:tab title="#{fms.nome}">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                        <h:outputText value="Diretor: #{fms.diretor}" />
+                        <h:outputText value="Elenco: #{fms.elenco}" />
+                        <h:outputText value="Data de Lançamento: #{fms.dataLancamento}" />
+                        <h:outputText value="Classificação: #{fms.classificacao}" />
+                        <h:outputText value="Duração: #{fms.duracao}" />
+                        <h:outputText value="Genero: #{fms.generos}" />
+                        <h:outputText value="Sinopse: #{fms.sinopse}" />
+                    </h:panelGrid>
+                </p:tab>
 
-                <h:dataTable value="#{jSFFilmes.ALL}" var="fm"> 
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="nome"/>
-                        </f:facet>    
-                        <h:outputText value="#{fm.nome}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Sinopse"/>
-                        </f:facet>    
-                        <h:outputText value="#{fm.sinopse}"/>
-                    </h:column>
-                </h:dataTable>
+            </p:accordionPanel>
         </h:form>
     </h:body>
 </html>

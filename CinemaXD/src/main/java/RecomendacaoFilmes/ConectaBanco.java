@@ -26,7 +26,7 @@ public class ConectaBanco {
     protected static Connection conectaBanco() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinexd", "postgres", "123");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "123");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }
