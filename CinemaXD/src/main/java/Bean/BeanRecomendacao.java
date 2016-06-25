@@ -20,12 +20,12 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class jSFFilmes {
+public class BeanRecomendacao {
 
     /**
      * Creates a new instance of jSFFilmes
      */
-    public jSFFilmes() {
+    public BeanRecomendacao() {
     }
     
     public List<Filmes> getALL() throws ClassNotFoundException, SQLException{
