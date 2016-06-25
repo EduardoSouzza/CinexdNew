@@ -3,18 +3,19 @@ package classes;
 import java.util.Calendar;
 
 public class Filmes {
-    private int id;
-        private String nome;
-        private String elenco;
-        private String diretor;
-        private String classificacao;
-        private String sinopse;
-        private String duracao;
-        private String dataLancamento;
-        private String generos;
-        private PerfilFilme perfil;
 
-    public Filmes(int id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, String dataLancamento, String generos){
+    private int id;
+    private String nome;
+    private String elenco;
+    private String diretor;
+    private String classificacao;
+    private String sinopse;
+    private String duracao;
+    private String dataLancamento;
+    private String generos;
+    private PerfilFilme perfil;
+
+    public Filmes(int id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, String dataLancamento, String generos) {
         this.nome = nome;
         this.elenco = elenco;
         this.diretor = diretor;
@@ -25,8 +26,8 @@ public class Filmes {
         this.generos = generos;
         this.perfil = perfil;
     }
-    
-    public Filmes(){
+
+    public Filmes() {
         this.id = 0;
         this.nome = null;
         this.elenco = null;
@@ -38,8 +39,6 @@ public class Filmes {
         this.generos = null;
         this.perfil = null;
     }
-
-    
 
     public String getNome() {
         return nome;
@@ -88,7 +87,6 @@ public class Filmes {
     public void setDuracao(String duracao) {
         this.duracao = duracao;
     }
-
 
     public String getGeneros() {
         return generos;
@@ -139,5 +137,5 @@ public class Filmes {
     public void setPerfil(PerfilFilme perfil) {
         this.perfil = perfil;
     }
-    
+
 }

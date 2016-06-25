@@ -147,9 +147,9 @@ public class ConectaBanco {
 
             p.setString(1, fm.getDiretor());
             p.setString(2, fm.getElenco());
-            p.setInt(3, 0);
+            p.setInt(3, Integer.parseInt(fm.getClassificacao()));
             p.setString(4, fm.getSinopse());
-            p.setInt(5, 0);
+            p.setInt(5, Integer.parseInt(fm.getDuracao()));
             p.setString(6, fm.getDataLancamento());
             p.setString(7, fm.getGeneros());
             p.setInt(8, fm.getId());

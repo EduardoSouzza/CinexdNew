@@ -41,7 +41,7 @@
                     <h:outputLabel class="txt-input" value="Gênero"/>
                     <h:inputText id="genero" class="c-input" size="20" value="#{crFilmes.fm.generos}" />
                     <h:message for="gen" />
-                    
+
                     <h:outputLabel class="txt-input" value="Sinopse"/>
                     <p:inputTextarea rows="6" cols="33" value="#{crFilmes.fm.sinopse}" />
                     <h:message for="sinopse" />
@@ -134,7 +134,10 @@
                     </p:selectOneRadio>
 
                     <h:commandButton id="btnE" class="bt-padrao" value="Cadastrar" action="#{crFilmes.inserir(e)}" />
-                    <h:commandButton id="btnL" class="bt-padrao" value="Limpar"/>
+                    <h:commandButton id="btnL" class="bt-padrao" value="#{crFilmes.fm.nome}"/>
+ 
+                   
+                    
                 </h:panelGrid>
 
             </div>

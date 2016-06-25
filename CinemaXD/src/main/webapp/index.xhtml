@@ -51,11 +51,16 @@
 
                         <h:outputText value="Classificacao" />
                         <h:outputText value="#{dataGridView.selectedFilmes.classificacao}" />
+                        
                     </p:panelGrid>
+                    <br></br>
+                    <h:commandButton value="Editar" action="#{crFilmes.selectFilme(e, dataGridView.selectedFilmes.nome)}"/>
+                    
+                    <h:commandButton value="Deletar" action="#{crFilmes.deleteFilme(e, dataGridView.selectedFilmes.id)}"/>
                 </p:outputPanel>
             </p:dialog>
-            <h:commandButton action="crudProduto" value="CRUD Produto" actionListener="#{beanProduto.prepararProduto(actionEvent)}"/>
-            <h:commandButton action="montarCombo" value="Montagem de Combo" actionListener="#{beanCombo.prepararCombo(actionEvent)}"/>
+           <!-- <h:commandButton action="crudProduto" value="CRUD Produto" actionListener="#{beanProduto.prepararProduto(actionEvent)}"/>
+            <h:commandButton action="montarCombo" value="Montagem de Combo" actionListener="#{beanCombo.prepararCombo(actionEvent)}"/> !-->
         </h:form>
     </h:body>
 </html>
