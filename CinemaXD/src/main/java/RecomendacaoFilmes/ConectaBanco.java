@@ -62,7 +62,7 @@ public class ConectaBanco {
         PerfilFilme perfil = new PerfilFilme();
         while (r.next()) {
             perfil.setAcao(r.getInt("Acao"));
-            perfil.setAnimação(r.getInt("Animacao"));
+            perfil.setAnimacao(r.getInt("Animacao"));
             perfil.setComedia(r.getInt("Comedia"));
             perfil.setDocumentario(r.getInt("Documentario"));
             perfil.setDrama(r.getInt("Drama"));
@@ -71,6 +71,7 @@ public class ConectaBanco {
         }
         return perfil;
     }
+    
 
     public static Cliente getUser(String nome) throws SQLException, ClassNotFoundException {
         Connection c = ConectaBanco.conectaBanco();

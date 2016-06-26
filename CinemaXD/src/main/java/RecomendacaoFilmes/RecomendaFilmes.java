@@ -49,10 +49,10 @@ public class RecomendaFilmes {
         else if(per1.getAcao()- per2.getAcao() < 0)
             result+= (per2.getAcao()- per1.getAcao())/10;
             
-        if(per1.getAnimação()- per2.getAnimação()> 0)
-            result+= (per1.getAnimação()- per2.getAnimação())/10;
-        else if(per1.getAnimação()- per2.getAnimação()< 0)
-            result+= (per2.getAnimação()- per1.getAnimação())/10;
+        if(per1.getAnimação()- per2.getAnimacao()> 0)
+            result+= (per1.getAnimação()- per2.getAnimacao())/10;
+        else if(per1.getAnimação()- per2.getAnimacao()< 0)
+            result+= (per2.getAnimacao()- per1.getAnimação())/10;
         
         if(per1.getComedia()- per2.getComedia()> 0)
             result+= (per1.getComedia()- per2.getComedia())/10;

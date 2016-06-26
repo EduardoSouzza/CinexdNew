@@ -37,7 +37,7 @@ public class Filmes {
         this.duracao = null;
         this.dataLancamento = null;
         this.generos = null;
-        this.perfil = null;
+        this.perfil = new PerfilFilme();
     }
 
     public String getNome() {

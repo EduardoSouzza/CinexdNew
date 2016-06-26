@@ -14,6 +14,11 @@
         <h:form >
             <div class="cad-center">
                 <h:panelGrid columns="3">
+
+                    <h:outputLabel class="txt-input input-id" value="Id:"/>
+                    <h:inputText id="id" class="c-input input-id" value="#{crFilmes.fm.id}" size="20" />
+                    <h:message for="id" /> 
+
                     <h:outputLabel class="txt-input" value="Nome:"/>
                     <h:inputText id="nome" class="c-input" value="#{crFilmes.fm.nome}" size="20" />
                     <h:message for="nome" />
@@ -56,7 +61,7 @@
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="acao" value="Ação:" />
-                    <p:selectOneRadio id="acao" >
+                    <p:selectOneRadio id="acao"  value="#{crFilmes.acao}" >
                         <f:selectItem itemLabel="0" itemValue="0" />
                         <f:selectItem itemLabel="1" itemValue="1" />
                         <f:selectItem itemLabel="2" itemValue="2" />
@@ -67,7 +72,7 @@
                 </h:panelGrid>
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="terror" value="Terror" />
-                    <p:selectOneRadio id="terror" >
+                    <p:selectOneRadio id="terror" value="#{crFilmes.terror}" >
                         <f:selectItem itemLabel="0" itemValue="0" />
                         <f:selectItem itemLabel="1" itemValue="1" />
                         <f:selectItem itemLabel="2" itemValue="2" />
@@ -78,7 +83,7 @@
                 </h:panelGrid>
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="suspense" value="Suspenso" />
-                    <p:selectOneRadio id="suspense" >
+                    <p:selectOneRadio id="suspense" value="#{crFilmes.suspense}">
                         <f:selectItem itemLabel="0" itemValue="0" />
                         <f:selectItem itemLabel="1" itemValue="1" />
                         <f:selectItem itemLabel="2" itemValue="2" />
@@ -89,7 +94,7 @@
                 </h:panelGrid>
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="animacao" value="Animação" />
-                    <p:selectOneRadio id="animacao"  >
+                    <p:selectOneRadio id="animacao"  value="#{crFilmes.animacao}">
                         <f:selectItem itemLabel="0" itemValue="0" />
                         <f:selectItem itemLabel="1" itemValue="1" />
                         <f:selectItem itemLabel="2" itemValue="2" />
@@ -100,7 +105,7 @@
                 </h:panelGrid>
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="documentario" value="Documentário" />
-                    <p:selectOneRadio id="documentario" >
+                    <p:selectOneRadio id="documentario" value="#{crFilmes.documentario}">
                         <f:selectItem itemLabel="0" itemValue="0" />
                         <f:selectItem itemLabel="1" itemValue="1" />
                         <f:selectItem itemLabel="2" itemValue="2" />
@@ -112,7 +117,7 @@
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="comedia" value="Comédia" />
-                    <p:selectOneRadio id="comedia" >
+                    <p:selectOneRadio id="comedia" value="#{crFilmes.comedia}">
                         <f:selectItem itemLabel="0" itemValue="0" />
                         <f:selectItem itemLabel="1" itemValue="1" />
                         <f:selectItem itemLabel="2" itemValue="2" />
@@ -124,7 +129,7 @@
 
                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="romance" value="Romance" />
-                    <p:selectOneRadio id="romance" >
+                    <p:selectOneRadio id="romance" value="#{crFilmes.romance}">
                         <f:selectItem itemLabel="0" itemValue="0" />
                         <f:selectItem itemLabel="1" itemValue="1" />
                         <f:selectItem itemLabel="2" itemValue="2" />
@@ -133,16 +138,45 @@
                         <f:selectItem itemLabel="5" itemValue="5" />
                     </p:selectOneRadio>
 
-                    <h:commandButton id="btnE" class="bt-padrao" value="Cadastrar" action="#{crFilmes.inserir(e)}" />
-                    <h:commandButton id="btnL" class="bt-padrao" value="#{crFilmes.fm.nome}"/>
- 
-                   
-                    
                 </h:panelGrid>
+                
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:outputLabel for="drama" value="Drama" />
+                    <p:selectOneRadio id="drama" value="#{crFilmes.drama}">
+                        <f:selectItem itemLabel="0" itemValue="0" />
+                        <f:selectItem itemLabel="1" itemValue="1" />
+                        <f:selectItem itemLabel="2" itemValue="2" />
+                        <f:selectItem itemLabel="3" itemValue="3" />
+                        <f:selectItem itemLabel="4" itemValue="4" />
+                        <f:selectItem itemLabel="5" itemValue="5" />
+                    </p:selectOneRadio>
+
+                </h:panelGrid>
+                <!-- salvar cadastrar ou limpar !-->
+                <div class="bts">
+                    <h:commandButton class="bt-padrao btnE" value="Cadastrar" action="#{crFilmes.inserir(e)}" />
+                    <h:commandButton class="bt-padrao btnL" value="Limpar"/>
+                    <!-- salvar alteração !-->
+                    <h:commandButton  class="bt-padrao btnSalvar" value="Salvar" action="#{crFilmes.updateFilme(e)}" />
+                </div>
+
+
 
             </div>
 
         </h:form>
+        <script>
+
+            $(".input-id").hide();
+            var showButton = #{crFilmes.showButton};
+            if (showButton == 0) {
+                $(".btnSalvar").hide();
+                $(".btnE, .btnL").show();
+            } else {
+                $(".btnE, .btnL").hide();
+                $(".btnSalvar").show();
+            }
+        </script>
     </h:body>
 </html>
 

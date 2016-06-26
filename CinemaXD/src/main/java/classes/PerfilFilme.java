@@ -17,12 +17,13 @@ public class PerfilFilme {
     private double romance;
     private double documentario;
     private double drama;
-    private double animação;
+    private double animacao;
+    private double suspense;
 
     public double getAcao() {
         return acao;
     }
-    
+
     public void setAcao(double acao) {
         this.acao = acao;
     }
@@ -30,7 +31,7 @@ public class PerfilFilme {
     public double getTerror() {
         return terror;
     }
-    
+
     public void setTerror(double terror) {
         this.terror = terror;
     }
@@ -67,12 +68,22 @@ public class PerfilFilme {
         this.drama = drama;
     }
 
-    public double getAnimação() {
-        return animação;
+    public double getAnimacao() {
+        return animacao;
     }
 
-    public void setAnimação(double animação) {
-        this.animação = animação;
+    public void setAnimacao(double animacao) {
+        this.animacao = animacao;
     }
+
+    public double getSuspense() {
+        return suspense;
+    }
+
+    public void setSuspense(double suspense) {
+        this.suspense = suspense;
+    }
+
+   
     
 }
