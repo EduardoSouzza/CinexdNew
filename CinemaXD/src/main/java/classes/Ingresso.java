@@ -10,7 +10,7 @@ package classes;
  * @author Marcelo
  */
 public class Ingresso {
-    private Filmes idFilme;
+    private int idFilme;
     private String dataFilme;
     private int valor;
     private int sala;
@@ -21,7 +21,7 @@ public class Ingresso {
         
     }
 
-    public Ingresso(Filmes idFilme, String dataFilme, int valor, int sala, String poltrona, String horario) {
+    public Ingresso(int idFilme, String dataFilme, int valor, int sala, String poltrona, String horario) {
         this.idFilme = idFilme;
         this.dataFilme = dataFilme;
         this.valor = valor;
@@ -30,11 +30,11 @@ public class Ingresso {
         this.horario = horario;
     }
 
-    public Filmes getIdFilme() {
+    public int getIdFilme() {
         return idFilme;
     }
 
-    public void setIdFilme(Filmes idFilme) {
+    public void setIdFilme(int idFilme) {
         this.idFilme = idFilme;
     }
 

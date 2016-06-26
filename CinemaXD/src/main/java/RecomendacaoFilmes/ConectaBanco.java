@@ -210,15 +210,13 @@ public class ConectaBanco {
     public static void createIngresso(Ingresso in) throws ClassNotFoundException, SQLException {
         try {
             Connection c = ConectaBanco.conectaBanco();
-            PreparedStatement p = c.prepareStatement("insert into ingresso (, diretor, elenco, classificacao, sinopse, duracao, datalancamento, genero) values (?,?,?,?,?,?,?,?)");
-            p.setString(1, fm.getNome());
-            p.setString(2, fm.getDiretor());
-            p.setString(3, fm.getElenco());
-            p.setInt(4, 0);
-            p.setString(5, fm.getSinopse());
-            p.setInt(6, 0);
-            p.setString(7, fm.getDataLancamento());
-            p.setString(8, fm.getGeneros());
+            PreparedStatement p = c.prepareStatement("insert into ingresso (id_filme, data_filme, valor, sala, poltrona, horario) values (?,?,?,?,?,?)");
+            p.setInt(1, in.getIdFilme());
+            p.setString(2, in.getDataFilme());
+            p.setInt(3, in.getValor());
+            p.setInt(4, in.getSala());
+            p.setString(5, in.getPoltrona());            
+            p.setString(6, in.getHorario());          
             p.execute();
         } catch (Exception e) {
             System.out.println("erroR: " + e);
