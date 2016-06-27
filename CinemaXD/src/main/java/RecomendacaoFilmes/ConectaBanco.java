@@ -18,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,7 +46,7 @@ public class ConectaBanco {
             fm.setId(r.getInt("id_Filme"));
             fm.setNome(r.getString("Nome"));
             fm.setElenco(r.getString("Elenco"));
-            fm.setClassificacao("Classificacao");
+            fm.setClassificacao(r.getString("Classificacao"));
             fm.setDiretor(r.getString("Diretor"));
             fm.setDataLancamento(r.getString("DataLancamento"));
             fm.setGeneros(r.getString("Genero"));
@@ -178,7 +180,7 @@ public class ConectaBanco {
             fm.setNome(rs.getString("nome"));
             fm.setDiretor(rs.getString("diretor"));
             fm.setElenco(rs.getString("elenco"));
-            fm.setClassificacao(rs.getString("classificacao"));
+            fm.setClassificacao(rs.getString("Classificacao"));
             fm.setSinopse(rs.getString("sinopse"));
             fm.setDuracao(rs.getString("duracao"));
             fm.setDataLancamento(rs.getString("datalancamento"));
@@ -202,7 +204,7 @@ public class ConectaBanco {
             fm.setNome(rs.getString("nome"));
             fm.setDiretor(rs.getString("diretor"));
             fm.setElenco(rs.getString("elenco"));
-            fm.setClassificacao(rs.getString("classificacao"));
+            fm.setClassificacao(rs.getString("Classificacao"));
             fm.setSinopse(rs.getString("sinopse"));
             fm.setDuracao(rs.getString("duracao"));
             fm.setDataLancamento(rs.getString("datalancamento"));
@@ -354,5 +356,23 @@ public class ConectaBanco {
         } catch (Exception e) {
             System.out.println("erroR: " + e);
         }
+
+    public static int getFilmesMaisAssistidos(Filmes fm) {
+        int res = 0;
+        try {
+            Connection c = ConectaBanco.conectaBanco();
+            PreparedStatement p = c.prepareStatement("select count(f.nome) as total from filme as f, ingresso i where ? = i.id_filme; ");
+            p.setInt(1, fm.getId());
+            ResultSet r = p.executeQuery();
+            
+            while(r.next()){
+                res = r.getInt("total");
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConectaBanco.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConectaBanco.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                   return res;
     }
 }

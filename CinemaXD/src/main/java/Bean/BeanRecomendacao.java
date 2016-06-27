@@ -33,12 +33,12 @@ public class BeanRecomendacao {
         use.setId_cliente(1);
         use.setNome("Karina");
         PerfilCliente p = new PerfilCliente();
-        p.setAcao(5);
-        p.setAnimação(0);
-        p.setComedia(5);
-        p.setDocumentario(0);
-        p.setDrama(2);
-        p.setRomance(3);
+        p.setAcao(4);
+        p.setAnimação(2);
+        p.setComedia(3);
+        p.setDocumentario(4);
+        p.setDrama(3);
+        p.setRomance(1);
         p.setTerror(0);
         use.setPerfil(p);
         
