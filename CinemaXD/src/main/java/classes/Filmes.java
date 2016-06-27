@@ -14,6 +14,7 @@ public class Filmes {
     private String dataLancamento;
     private String generos;
     private PerfilFilme perfil;
+    private String imagem;
 
     public Filmes(int id, String nome, String elenco, String diretor, String classificacao, String sinopse, String duracao, String dataLancamento, String generos) {
         this.nome = nome;
@@ -65,7 +66,7 @@ public class Filmes {
     }
 
     public String getClassificacao() {
-        return classificacao;
+        return this.classificacao;
     }
 
     public void setClassificacao(String classificacao) {
@@ -136,6 +137,20 @@ public class Filmes {
      */
     public void setPerfil(PerfilFilme perfil) {
         this.perfil = perfil;
+    }
+
+    /**
+     * @return the imagem
+     */
+    public String getImagem() {
+        return imagem;
+    }
+
+    /**
+     * @param imagem the imagem to set
+     */
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package RecomendacaoFilmes;
 
+import classes.Cinema;
 import classes.Cliente;
 import classes.Filmes;
 import classes.Ingresso;
@@ -23,16 +24,16 @@ import java.util.List;
  * @author usuario
  */
 public class ConectaBanco {
-
+    
     protected static Connection conectaBanco() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinexd", "postgres", "utfpr");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "123");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }
     }
-
+    
     public static List<Filmes> listAll() throws ClassNotFoundException, SQLException {
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("select * from Filme");
@@ -49,12 +50,13 @@ public class ConectaBanco {
             fm.setGeneros(r.getString("Genero"));
             fm.setSinopse(r.getString("Sinopse"));
             fm.setDuracao(String.valueOf(r.getString("Duracao")));
+            fm.setImagem(r.getString("imagem"));
             fm.setPerfil(ConectaBanco.getPerfil(fm.getId()));
             lista_de_filmes.add(fm);
         }
         return lista_de_filmes;
     }
-
+    
     public static PerfilFilme getPerfil(int id_filmes) throws SQLException, ClassNotFoundException {
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("select * from Perfil where id_filme = ?;");
@@ -73,7 +75,6 @@ public class ConectaBanco {
         return perfil;
     }
     
-
     public static Cliente getUser(String nome) throws SQLException, ClassNotFoundException {
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("select * from Cliente where NOme like ? ;");
@@ -89,7 +90,7 @@ public class ConectaBanco {
         }
         return cli;
     }
-
+    
     public static PerfilCliente getPerfilCli(int id_Cliente) throws SQLException, ClassNotFoundException {
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("select * from Perfil_cliente where id_cliente = ?;");
@@ -107,12 +108,12 @@ public class ConectaBanco {
         }
         return perfil;
     }
-
+    
     public static void createFilmes(Filmes fm) throws ClassNotFoundException, SQLException {
         try {
-
+            
             Connection c = ConectaBanco.conectaBanco();
-            PreparedStatement p = c.prepareStatement("insert into filme (nome, diretor, elenco, classificacao, sinopse, duracao, datalancamento, genero) values (?,?,?,?,?,?,?,?)");
+            PreparedStatement p = c.prepareStatement("insert into filme (nome, diretor, elenco, classificacao, sinopse, duracao, datalancamento, genero ,imagem) values (?,?,?,?,?,?,?,?,?)");
             p.setString(1, fm.getNome());
             p.setString(2, fm.getDiretor());
             p.setString(3, fm.getElenco());
@@ -121,14 +122,15 @@ public class ConectaBanco {
             p.setInt(6, 0);
             p.setString(7, fm.getDataLancamento());
             p.setString(8, fm.getGeneros());
+            p.setString(9, fm.getImagem());
             p.execute();
         } catch (Exception e) {
             System.out.println("erroR: " + e);
         }
     }
-
+    
     public static void deleteFilme(int idFilme) {
-
+        
         try {
             Connection c = ConectaBanco.conectaBanco();
             PreparedStatement p = c.prepareStatement("delete from filme where id_filme = ?");
@@ -138,15 +140,15 @@ public class ConectaBanco {
             System.out.println("erroR: " + e);
         }
     }
-
+    
     public static void updateFilme(Filmes fm) throws ClassNotFoundException, SQLException {
-       
+        
         try {
             Connection c = ConectaBanco.conectaBanco();
             PreparedStatement p = c.prepareStatement("update filme set diretor = ?,"
                     + "                              elenco = ?, classificacao = ?, sinopse = ?, duracao = ?,"
-                    + "                              datalancamento = ?, genero = ? where id_filme = ?");
-
+                    + "                              datalancamento = ?, genero = ?, imagem = ? where id_filme = ?");
+            
             p.setString(1, fm.getDiretor());
             p.setString(2, fm.getElenco());
             p.setInt(3, Integer.parseInt(fm.getClassificacao()));
@@ -154,22 +156,23 @@ public class ConectaBanco {
             p.setInt(5, Integer.parseInt(fm.getDuracao()));
             p.setString(6, fm.getDataLancamento());
             p.setString(7, fm.getGeneros());
-            p.setInt(8, fm.getId());
+            p.setString(8, fm.getImagem());
+            p.setInt(9, fm.getId());
             p.executeUpdate();
             System.out.println("passou");
         } catch (Exception e) {
             System.out.println("erroR: " + e);
         }
     }
-
+    
     public static Filmes selectFilme(String nomeFilme) throws ClassNotFoundException, SQLException {
-
+        
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("SELECT * FROM filme where nome like ?");
         p.setString(1, nomeFilme);
         ResultSet rs = p.executeQuery();
         Filmes fm = new Filmes();
-
+        
         while (rs.next()) {
             fm.setId(Integer.parseInt(rs.getString("id_filme")));
             fm.setNome(rs.getString("nome"));
@@ -180,13 +183,15 @@ public class ConectaBanco {
             fm.setDuracao(rs.getString("duracao"));
             fm.setDataLancamento(rs.getString("datalancamento"));
             fm.setGeneros(rs.getString("genero"));
+            fm.setImagem(rs.getString("imagem"));
+            fm.setPerfil(ConectaBanco.getPerfil(fm.getId()));
         }
-
+        
         return fm;
     }
-
+    
     public static ArrayList<Filmes> selectAllFilmes() throws ClassNotFoundException, SQLException {
-
+        
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("SELECT * FROM filme");
         ResultSet rs = p.executeQuery();
@@ -202,6 +207,7 @@ public class ConectaBanco {
             fm.setDuracao(rs.getString("duracao"));
             fm.setDataLancamento(rs.getString("datalancamento"));
             fm.setGeneros(rs.getString("genero"));
+            fm.setImagem(rs.getString("imagem"));
             filmes.add(fm);
         }
         return filmes;
@@ -216,11 +222,25 @@ public class ConectaBanco {
             p.setInt(3, in.getValor());
             p.setInt(4, in.getSala());
             p.setString(5, in.getPoltrona());            
-            p.setString(6, in.getHorario());          
+            p.setString(6, in.getHorario());            
+            p.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("erroR: " + e);
+        }
+    }
+
+    public static void createCinema(Cinema cinema) {
+        try {
+            Connection c = ConectaBanco.conectaBanco();
+            PreparedStatement p = c.prepareStatement("insert into cinema (nome, endereco , cidade , telefone, estado) values (?,?,?,?)");
+            p.setString(1, cinema.getNome());
+            p.setString(2, cinema.getEndereco());
+            // p.setString(3, cinema.getCidade().);
+            p.setInt(4, 0);
+            
             p.execute();
         } catch (Exception e) {
             System.out.println("erroR: " + e);
         }
     }
 }
-

@@ -10,22 +10,22 @@
     <h:body>
         <h:form id="form"> 
             <h3>Lista de Filmes Recomendados</h3>
-            <p:accordionPanel value="#{jSFFilmes.ALL}" var="fms">
+            <p:accordionPanel value="#{beanRecomendacao.ALL}" var="fms">
                 <p:tab title="#{fms.nome}">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+                    <h:panelGrid columns="3" cellpadding="10">
+                        <img src="imagens/#{fms.imagem}"/>
+                        <h:outputText value="Sinopse: #{fms.sinopse}" />
                         <h:outputText value="Diretor: #{fms.diretor}" />
                         <h:outputText value="Elenco: #{fms.elenco}" />
                         <h:outputText value="Data de Lançamento: #{fms.dataLancamento}" />
                         <h:outputText value="Classificação: #{fms.classificacao}" />
                         <h:outputText value="Duração: #{fms.duracao}" />
-                        <h:outputText value="Genero: #{fms.generos}" />
-                        <h:outputText value="Sinopse: #{fms.sinopse}" />
+                        <h:outputText value="Genero: #{fms.generos}" />                     
                     </h:panelGrid>
                 </p:tab>
-
             </p:accordionPanel>
         </h:form>
     </h:body>
 </html>
+
 
