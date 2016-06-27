@@ -13,7 +13,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name = "filmesService")
 @ApplicationScoped
 public class FilmeService {
-
+    Filmes filme = new Filmes();
     private final static String[] generos;
 
     private final static String[] classificacao;
@@ -89,4 +89,13 @@ public class FilmeService {
         String c = Calendar.getInstance().getTime().toString();
         return c;
     }
+
+    public Filmes getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filmes filme) {
+        this.filme = filme;
+    }
+    
 }

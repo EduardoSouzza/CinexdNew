@@ -56,6 +56,8 @@
                     <h:commandButton value="Editar" action="#{crFilmes.selectFilme(e, dataGridView.selectedFilmes.nome)}"/>
                     
                     <h:commandButton value="Deletar" action="#{crFilmes.deleteFilme(e, dataGridView.selectedFilmes.id)}"/>
+                    
+                    <h:commandButton value="Comprar" action="#{crudIngresso.carregarFilme(ae,dataGridView.selectedFilmes.nome)}"/>
                 </p:outputPanel>
             </p:dialog>
         </h:form>

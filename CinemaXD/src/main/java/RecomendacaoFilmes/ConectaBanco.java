@@ -28,7 +28,7 @@ public class ConectaBanco {
     protected static Connection conectaBanco() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinexd", "postgres", "utfpr");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "postgres");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }
@@ -232,7 +232,7 @@ public class ConectaBanco {
             PreparedStatement p = c.prepareStatement("insert into ingresso (id_filme, data_filme, valor, sala, poltrona, horario) values (?,?,?,?,?,?)");
             p.setInt(1, in.getIdFilme());
             p.setString(2, in.getDataFilme());
-            p.setInt(3, in.getValor());
+            p.setDouble(3, in.getValor());
             p.setInt(4, in.getSala());
             p.setString(5, in.getPoltrona());
             p.setString(6, in.getHorario());
@@ -339,6 +339,17 @@ public class ConectaBanco {
             Connection c = ConectaBanco.conectaBanco();
             PreparedStatement p = c.prepareStatement("delete from cinema where id_cinema = ?");
             p.setInt(1, idCinema);
+            p.execute();
+        } catch (Exception e) {
+            System.out.println("erroR: " + e);
+        }
+    }
+    
+    public static void deleteIngresso(int id) throws ClassNotFoundException, SQLException {
+        try {
+            Connection c = ConectaBanco.conectaBanco();
+            PreparedStatement p = c.prepareStatement("delete from ingresso where id_engresso = ?");
+            p.setInt(1, id);            
             p.execute();
         } catch (Exception e) {
             System.out.println("erroR: " + e);

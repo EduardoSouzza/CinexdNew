@@ -10,29 +10,43 @@
         <title>Ingresso</title>
     </h:head>
     <h:body class="background-cad">
-        <h1><div class="txt-Cadastro">Cadastro de Ingresso</div></h1>
+        <h1><div class="txt-Cadastro">Comprar Ingresso</div></h1>
         <h:form>
             <div class="cad-center">
                 <h:panelGrid columns="3">
-                    <h:outputLabel class="txt-input" value="Nome:"/>
+                    <h:outputLabel class="txt-input" value="FILME" />
+                    <h:outputText id="nomeFilme" value="#{crudIngresso.filme.nome}" />
+
+                    <!--<h:outputLabel class="txt-input" value="FILME:"/>
                     <h:inputText id="nome" class="c-input" size="20" />
-                    <h:message for="nome" />
+                    <h:message for="nome" />-->
+                    <h:outputLabel class="txt-input" value="DATA"/>
+                    <h:inputText class="txt-input"  value="#{crudIngresso.ingresso.dataFilme}">
+                        <!--<f:convertDateTime />-->
+                    </h:inputText>
+                    <h:message for="data" />
 
-                    <h:outputLabel class="txt-input" value="Endereçoo:"/>
-                    <h:inputText id="end" class="c-input" size="20"  />
-                    <h:message for="end" />
+                    <h:outputLabel class="txt-input" value="SALA"/>
+                    <h:inputText id="sala" class="c-input" size="20" value="#{crudIngresso.ingresso.sala}"/>
+                    <h:message for="sala" />
 
-                    <h:outputLabel class="txt-input" value="Número:"/>
-                    <h:inputText id="nro" class="c-input" size="20" />
-                    <h:message for="nro" />
-
-                    <h:outputLabel class="txt-input" value="Cidade:"/>
-                    <h:inputText id="mun" class="c-input" size="20" />
+                    <h:outputLabel class="txt-input" value="POLTRONA:"/>
+                    <h:inputText id="mun" class="c-input" size="20" value="#{crudIngresso.ingresso.poltrona}"/>
                     <h:message for="mun" />
 
-                    <h:commandButton id="btnE" class="bt-padrao" value="Cadastrar" />
-                    <h:commandButton id="btnL" class="bt-padrao" value="Limpar"/>
-                </h:panelGrid>
+                    <h:outputLabel class="txt-input" value="HORARIO:"/>
+                    <h:inputText class="txt-input" value="#{crudIngresso.ingresso.horario}">
+                        <!--<f:convertDateTime type="time" />-->
+                    </h:inputText>
+                    <h:message for="horario" />
+
+                    <h:outputLabel class="txt-input" value="VALOR: R$"/>
+                    <h:outputLabel id="valor" class="c-input" value="#{crudIngresso.ingresso.valor}"/>
+
+                    <br/><br/>
+                    <h:commandButton id="btnE" class="bt-padrao" action="#{crudIngresso.comprarIngresso(ae, crudIngresso.filme.nome)}" value="Comprar" />
+                    <h:commandButton id="btnL" class="bt-padrao" action="index" value="Voltar"/>
+                </h:panelGrid>                                            
             </div>
         </h:form>
     </h:body>

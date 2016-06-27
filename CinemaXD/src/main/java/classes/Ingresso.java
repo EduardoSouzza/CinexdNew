@@ -12,7 +12,7 @@ package classes;
 public class Ingresso {
     private int idFilme;
     private String dataFilme;
-    private int valor;
+    private double valor;
     private int sala;
     private String poltrona;
     private String horario;
@@ -21,7 +21,7 @@ public class Ingresso {
         
     }
 
-    public Ingresso(int idFilme, String dataFilme, int valor, int sala, String poltrona, String horario) {
+    public Ingresso(int idFilme, String dataFilme, double valor, int sala, String poltrona, String horario) {
         this.idFilme = idFilme;
         this.dataFilme = dataFilme;
         this.valor = valor;
@@ -46,11 +46,11 @@ public class Ingresso {
         this.dataFilme = dataFilme;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
 

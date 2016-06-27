@@ -4,6 +4,7 @@ import RecomendacaoFilmes.ConectaBanco;
 import static RecomendacaoFilmes.ConectaBanco.selectFilme;
 import classes.Cinema;
 import classes.Filmes;
+import classes.Ingresso;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -20,9 +21,12 @@ public class DataGridView implements Serializable {
 
     private Filmes selectedFilmes;
     private Cinema selectedCinema;
+    
+    private Ingresso selectIngresso;
 
     @ManagedProperty("#{filmesService}")
     private FilmeService service;
+        
 
     @PostConstruct
     public void init() {
