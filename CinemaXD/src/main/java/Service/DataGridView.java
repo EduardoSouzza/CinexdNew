@@ -2,6 +2,7 @@ package Service;
 
 import RecomendacaoFilmes.ConectaBanco;
 import static RecomendacaoFilmes.ConectaBanco.selectFilme;
+import classes.Cinema;
 import classes.Filmes;
 import java.io.Serializable;
 import java.util.List;
@@ -15,8 +16,10 @@ import javax.faces.bean.ViewScoped;
 public class DataGridView implements Serializable {
 
     private List<Filmes> filmes;
+    private List<Cinema> cinema;
 
     private Filmes selectedFilmes;
+    private Cinema selectedCinema;
 
     @ManagedProperty("#{filmesService}")
     private FilmeService service;
@@ -31,6 +34,7 @@ public class DataGridView implements Serializable {
             //ConectaBanco.updateFilme("Filme novo3");
             //ConectaBanco.selectFilme("Nome do filme");
             filmes = ConectaBanco.selectAllFilmes();
+            cinema = ConectaBanco.selectAllCinemas();
 
             /*Filmes nFilme = selectFilme("Marcleo");
             nFilme.setDiretor("novo diretor");
@@ -67,5 +71,23 @@ public class DataGridView implements Serializable {
     public void setService(FilmeService service) {
         this.service = service;
     }
+
+    public List<Cinema> getCinema() {
+        return cinema;
+    }
+
+    public void setCinema(List<Cinema> cinema) {
+        this.cinema = cinema;
+    }
+
+    public Cinema getSelectedCinema() {
+        return selectedCinema;
+    }
+
+    public void setSelectedCinema(Cinema selectedCinema) {
+        this.selectedCinema = selectedCinema;
+    }
+    
+    
 
 }

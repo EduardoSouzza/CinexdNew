@@ -18,6 +18,11 @@ public class Cinema {
         this.telefone = telefone;
     }
 
+    public Cinema() {
+    }
+    
+    
+
     public int getId() {
         return id;
     }

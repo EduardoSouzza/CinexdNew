@@ -5,6 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <link href="index.css" rel="stylesheet" type="text/css"/>
     <h:head>
         <title>Cinema</title>
@@ -14,27 +15,51 @@
         <h:form>
             <div class="cad-center">
                 <h:panelGrid columns="3">
+                    
+                     <h:outputLabel class="txt-input input-id-cinema" value="id"/>
+                     <h:inputText id="id" class="c-input input-id-cinema" size="20" value="#{crCinema.cin.id}" />
+                    <h:message for="id" />
+                    
                     <h:outputLabel class="txt-input" value="Nome:"/>
-                    <h:inputText id="nome" class="c-input" size="20" />
+                    <h:inputText id="nome" class="c-input" size="20" value="#{crCinema.cin.nome}" />
                     <h:message for="nome" />
 
-                    <h:outputLabel class="txt-input" value="Endereçoo:"/>
-                    <h:inputText id="end" class="c-input" size="20"  />
+                    <h:outputLabel class="txt-input" value="Endereço:"/>
+                    <h:inputText id="end" class="c-input" size="20" value="#{crCinema.cin.endereco}" />
                     <h:message for="end" />
 
-                    <h:outputLabel class="txt-input" value="Número:"/>
-                    <h:inputText id="nro" class="c-input" size="20" />
+                    <h:outputLabel class="txt-input" value="Cidade:"/>
+                    <h:inputText id="nro" class="c-input" size="20" value="#{crCinema.cin.cidade}" />
                     <h:message for="nro" />
 
-                    <h:outputLabel class="txt-input" value="Cidade:"/>
-                    <h:inputText id="mun" class="c-input" size="20" />
+                    <h:outputLabel class="txt-input" value="Estado:"/>
+                    <h:inputText id="est" class="c-input" size="20" value="#{crCinema.cin.estado}" />
                     <h:message for="mun" />
 
-                    <h:commandButton id="btnE" class="bt-padrao" value="Cadastrar" />
-                    <h:commandButton id="btnL" class="bt-padrao" value="Limpar"/>
+                    <h:outputLabel class="txt-input" value="Telefone:"/>
+                    <h:inputText id="tel" class="c-input" size="20" value="#{crCinema.cin.telefone}" />
+                    <h:message for="mun" />
+
+                    <h:commandButton class="bt-padrao btnE" value="Cadastrar" action="#{crCinema.inserCinema(e)}"/>
+                    <h:commandButton class="bt-padrao btnL" value="Limpar"/>
+                    <!-- salvar alteração !-->
+                    <h:commandButton  class="bt-padrao btnSalvar" value="Salvar" action="#{crCinema.updateCinema(e)}" />
                 </h:panelGrid>
             </div>
         </h:form>
+        <script>
+
+            $(".input-id-cinema").hide();
+            var showButton = #{crCinema.showButton};
+            
+            if (showButton == 0) {
+                $(".btnSalvar").hide();
+                $(".btnE, .btnL").show();
+            } else {
+                $(".btnE, .btnL").hide();
+                $(".btnSalvar").show();
+            }
+        </script>
     </h:body>
 </html>
 
