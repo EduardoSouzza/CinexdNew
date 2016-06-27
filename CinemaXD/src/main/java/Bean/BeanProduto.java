@@ -6,7 +6,6 @@
 package Bean;
 
 import DAO.Crud;
-import DAO.CrudProduto;
 import classes.Produto;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
@@ -34,26 +33,26 @@ public class BeanProduto implements Serializable {
     }
 
     public String inserir(ActionEvent actionEvent) {
-        Crud dao = new CrudProduto();
+        Crud dao = new DAO.BeanProduto();
         dao.inserir(produto);
         return "index";
     }
 
     public String remover(ActionEvent actionEvent) {
-        Crud dao = new CrudProduto();
+        Crud dao = new DAO.BeanProduto();
         dao.remover(produto.getIdProduto());
         return "index";
     }
 
     public List<Produto> listar() {
-        Crud dao = new CrudProduto();
+        Crud dao = new DAO.BeanProduto();
         List<Produto> l = new ArrayList();
         l = dao.lista();
         return l;
     }
 
     public String alterar(ActionEvent actionEvent) {
-        Crud dao = new CrudProduto();
+        Crud dao = new DAO.BeanProduto();
         dao.alterar(produto);
         return "index";
     }

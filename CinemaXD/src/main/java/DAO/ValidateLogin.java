@@ -36,9 +36,9 @@ public class ValidateLogin implements Serializable {
             page = l ? "index" : "login";
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CrudCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(CrudCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         return page;
     }

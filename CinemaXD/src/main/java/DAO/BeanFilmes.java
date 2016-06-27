@@ -19,7 +19,7 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "crFilmes")
 @RequestScoped
-public class CrudFilmes implements Serializable {
+public class BeanFilmes implements Serializable {
 
     Filmes fm = new Filmes();
     String nomeFilme;
@@ -68,9 +68,9 @@ public class CrudFilmes implements Serializable {
 
             ConectaBanco.createFilmes(fm);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CrudFilmes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanFilmes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(CrudFilmes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanFilmes.class.getName()).log(Level.SEVERE, null, ex);
         }
         showButton = 0;
         return "index";

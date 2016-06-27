@@ -6,8 +6,7 @@
 package Bean;
 
 import DAO.Crud;
-import DAO.CrudCombo;
-import DAO.CrudProduto;
+import DAO.BeanProduto;
 import classes.Combo;
 import classes.Produto;
 import java.awt.event.ActionEvent;
@@ -44,19 +43,19 @@ public class BeanCombo implements Serializable{
     }
     
     public String inserir(ActionEvent actionEvent) {
-        Crud dao = new CrudCombo();
+        Crud dao = new DAO.BeanCombo();
         dao.inserir(combo);
         return "index";
     }
     
     public String remover(ActionEvent actionEvent) {
-        Crud dao = new CrudCombo();
+        Crud dao = new DAO.BeanCombo();
         dao.remover(combo.getIdCombo());
         return "index";
     }
     
     public List<Combo> listar() {
-        Crud dao = new CrudCombo();
+        Crud dao = new DAO.BeanCombo();
         List<Combo> l = new ArrayList();
         l = dao.lista();
         return l;

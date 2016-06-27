@@ -23,7 +23,7 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "crCliente")
 @RequestScoped
-public class CrudCliente implements Serializable {
+public class BeanCliente implements Serializable {
 
     Cliente cli = new Cliente();
     
@@ -37,9 +37,9 @@ public class CrudCliente implements Serializable {
         try {
             ConectaBanco.createUsuario(cli);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CrudCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(CrudCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return "login";

@@ -18,7 +18,7 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "crCinema")
 @RequestScoped
-public class CrudCinema implements Serializable {
+public class BeanCinema implements Serializable {
 
     Cinema cin = new Cinema();
     int showButton = 0;
@@ -47,9 +47,9 @@ public class CrudCinema implements Serializable {
         try {
             ConectaBanco.createCinema(cin);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CrudCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(CrudCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         showButton = 0;
