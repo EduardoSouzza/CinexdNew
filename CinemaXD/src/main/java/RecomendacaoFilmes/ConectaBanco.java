@@ -367,19 +367,7 @@ public class ConectaBanco {
             listaIngresso.add(in);
         }
         return listaIngresso;
-    }
-
-    public static void ingressoComprado(int idFilme, String data) {
-        try {
-            Connection c = ConectaBanco.conectaBanco();
-            PreparedStatement p = c.prepareStatement("insert into IngressosVendidos (id_filme, Data_filme) values (?,?)");
-            p.setInt(1, idFilme);
-            p.setString(2, data);
-            p.execute();
-        } catch (Exception e) {
-            System.out.println("erroR: " + e);
-        }
-    }
+    }   
 
     public static void selectIngressoComprado() {
         try {
@@ -390,18 +378,7 @@ public class ConectaBanco {
             System.out.println("erroR: " + e);
         }
     }
-
-    public static void deleteIngresso(int id) throws ClassNotFoundException, SQLException {
-        try {
-            Connection c = ConectaBanco.conectaBanco();
-            PreparedStatement p = c.prepareStatement("delete from ingresso where id_engresso = ?");
-            p.setInt(1, id);
-            p.execute();
-        } catch (Exception e) {
-            System.out.println("erroR: " + e);
-        }
-    }
-
+    
     public static int getFilmesMaisAssistidos(Filmes fm) {
         int res = 0;
         try {
