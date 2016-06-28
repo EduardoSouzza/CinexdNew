@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="index.css" rel="stylesheet" type="text/css"/>
+    <h:head>
+        <title>Ticket</title>        
+    </h:head>
+    <h:body class="background-cad">
+        <h1><div class="txt-Cadastro">Nota do Ingresso</div></h1>        
+          <h:form>
+            <div class="cad-center">
+                <h:panelGrid columns="3">
+                    <h:outputLabel class="txt-input" value="FILME" />
+                    <h:outputText id="nomeFilme" value="#{crudIngresso.filme.nome}" />                  
+                    <br/><br/>
+                    <h:outputLabel class="txt-input" value="DATA"/>                        
+                    <h:outputLabel class="txt-input"  value="#{crudIngresso.ingresso.dataFilme}"/>
+                    <br/><br/>
+                    <h:outputLabel class="txt-input" value="SALA"/>
+                    <h:outputLabel class="txt-input"  value="#{crudIngresso.ingresso.sala}:"/>
+                    <br/><br/>
+                    <h:outputLabel class="txt-input"  value="POLTRONA:"/>
+                    <h:outputLabel class="txt-input"  value="#{crudIngresso.ingresso.poltrona}"/>
+                    <br/><br/>
+
+                    <h:outputLabel class="txt-input" value="HORARIO:"/>
+                    <h:outputLabel class="txt-input" value="#{crudIngresso.ingresso.horario}"/>
+                    <br/><br/>
+
+                    <h:outputLabel class="txt-input" value="VALOR: R$"/>
+                    <h:outputLabel id="valor" class="c-input" value="#{crudIngresso.ingresso.valor}"/>
+
+                    <br/><br/>
+                    <h:commandButton id="btnE" class="bt-ticket" action="MontarCombo?faces-redirect=true" value="Comprar produtos" />
+
+                    <h:commandButton id="btnL" class="bt-ticket" action="ListagemCinema?faces-redirect=true" value="Voltar"/>                  
+                </h:panelGrid>                                            
+            </div>
+        </h:form>
+    </h:body>
+</html>

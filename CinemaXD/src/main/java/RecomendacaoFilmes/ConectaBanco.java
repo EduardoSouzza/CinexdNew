@@ -243,9 +243,9 @@ public class ConectaBanco {
             p.setString(3, cli1.getEmail());
 
             p.execute();
-            
+
             Cliente cli = getUser(cli1.getNome());
-            
+
 
             p = c.prepareStatement("insert into perfil_cliente (id_cliente , acao ,terror , suspense ,animacao , documentario, comedia , romance, drama) values( ? ,?,?,?,?,?,?,?,?)");
             p.setInt(1, cli.getId_cliente());
