@@ -50,3 +50,13 @@ and open the template in the editor.
     position: absolute;
     z-index: -1;
 }
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem{
+    list-style: none;
+    float: left;
+    position: relative;
+    margin: 2px .2em 1px 0;
+    white-space: nowrap;
+    display: block;
+    border-bottom: 0;
+    width: 300px;
+}

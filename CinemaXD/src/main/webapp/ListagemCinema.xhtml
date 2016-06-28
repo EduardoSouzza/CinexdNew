@@ -22,7 +22,7 @@
                         <h:outputText value="telefone: #{cinema.telefone}" />
 
                         <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <h:outputText styleClass="ui-icon ui-icon-search"  style="margin:0 auto;" />
                             <f:setPropertyActionListener value="#{cinema}" target="#{dataGridView.selectedCinema}" />
                         </p:commandLink>
                     </h:panelGrid>
@@ -44,14 +44,32 @@
 
                     </p:panelGrid>
                     <br></br>
-
-                    <h:commandButton value="Editar" action="#{crCinema.selectCinema(e, dataGridView.selectedCinema.nome)}"/>
-                    <h:commandButton value="Deletar" action="#{crCinema.deleteCinema(e, dataGridView.selectedCinema.id)}"/>
+                    <div class="hideBts">
+                        <h:commandButton value="Editar"  action="#{crCinema.selectCinema(e, dataGridView.selectedCinema.nome)}"/>
+                        <h:commandButton value="Deletar" action="#{crCinema.deleteCinema(e, dataGridView.selectedCinema.id)}"/>
+                    </div>
+                    <br></br>
+                    <h:commandButton value="Escolher Cinema" action="#{crCinema.escolheCinemaFilme(e, dataGridView.selectedCinema.nome)}"/>
                 </p:outputPanel>
             </p:dialog>
 
         </h:form>
-        
+        <script>
+            var admin = #{vlLogin.admin}
+
+            $(".ui-icon").on("click", function () {
+                setTimeout(function () {
+                    if (admin) {
+                        $(".hideBts").show();
+                    } else {
+                        $(".hideBts").hide();
+                    }
+                }, 100);
+
+            });
+
+        </script>
+
     </h:body>
 
 </html>

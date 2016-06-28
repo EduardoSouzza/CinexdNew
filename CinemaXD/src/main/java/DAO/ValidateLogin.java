@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 public class ValidateLogin implements Serializable {
 
     Cliente cli = new Cliente();
+    Boolean admin = false;
 
     @PostConstruct
     public void init() {
@@ -36,12 +37,14 @@ public class ValidateLogin implements Serializable {
         try {
 
             l = ConectaBanco.verifyLogin(cli);
-            if (l){
-                HttpSession session = SessionUtils.getSession();
-		session.setAttribute("username", cli);
-                page = "MenuPrincipalUsuario";
-            }else{
-                page = "login";
+            if (cli.getNome().equals("admin")) {
+                if (l) {
+                    page = "MenuPrincipalUsuario";
+                    admin = true;
+                }
+            } else {
+                page = l ? "ListagemCinema" : "login";
+                admin = false;
             }
 
         } catch (ClassNotFoundException ex) {
@@ -59,5 +62,15 @@ public class ValidateLogin implements Serializable {
     public void setFm(Cliente cli) {
         this.cli = cli;
     }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+    
+    
 
 }

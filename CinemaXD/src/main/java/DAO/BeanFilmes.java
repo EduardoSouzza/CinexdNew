@@ -73,7 +73,7 @@ public class BeanFilmes implements Serializable {
             Logger.getLogger(BeanFilmes.class.getName()).log(Level.SEVERE, null, ex);
         }
         showButton = 0;
-        return "index";
+        return "ListagemFilmes";
     }
 
     public String updateFilme(ActionEvent e) throws ClassNotFoundException, SQLException {
@@ -82,13 +82,13 @@ public class BeanFilmes implements Serializable {
         System.out.println("fmss diretor " + fm.getDiretor());
         System.out.println("fmss lancamento " + fm.getDataLancamento());
         ConectaBanco.updateFilme(fm);
-        return "index";
+        return "ListagemFilmes";
     }
 
     public String deleteFilme(ActionEvent e, int id) throws ClassNotFoundException, SQLException {
         System.out.println("id index" + id);
         ConectaBanco.deleteFilme(id);
-        return "index";
+        return "ListagemFilmes";
     }
 
     public Filmes getFm() {
@@ -186,5 +186,5 @@ public class BeanFilmes implements Serializable {
     public void setSuspense(double suspense) {
         this.suspense = suspense;
     }
-
+    
 }

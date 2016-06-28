@@ -135,6 +135,9 @@ public class ConectaBanco {
 
         try {
             Connection c = ConectaBanco.conectaBanco();
+            PreparedStatement pf = c.prepareStatement("delete from perfil where id_filme = ?");
+            pf.setInt(1, idFilme);
+            pf.execute();
             PreparedStatement p = c.prepareStatement("delete from filme where id_filme = ?");
             p.setInt(1, idFilme);
             p.execute();

@@ -42,7 +42,7 @@ public class BeanCliente implements Serializable {
             Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return "login";
+        return "index";
     }
 
     public Cliente getCli() {

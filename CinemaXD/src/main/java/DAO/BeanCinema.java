@@ -21,6 +21,7 @@ import javax.faces.bean.RequestScoped;
 public class BeanCinema implements Serializable {
 
     Cinema cin = new Cinema();
+    String cinemaEscolhido;
     int showButton = 0;
 
     @PostConstruct
@@ -67,6 +68,11 @@ public class BeanCinema implements Serializable {
         return "ListagemCinema";
     }
 
+    public String escolheCinemaFilme(ActionEvent e, String cn) {
+        cinemaEscolhido = cn;
+        return "ListagemFilmes";
+    }
+
     public Cinema getCin() {
         return cin;
     }
@@ -82,5 +88,15 @@ public class BeanCinema implements Serializable {
     public void setShowButton(int showButton) {
         this.showButton = showButton;
     }
+
+    public String getCinemaEscolhido() {
+        return cinemaEscolhido;
+    }
+
+    public void setCinemaEscolhido(String cinemaEscolhido) {
+        this.cinemaEscolhido = cinemaEscolhido;
+    }
+    
+    
 
 }
