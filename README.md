@@ -1,5 +1,10 @@
 # CinexdNew
 
+
+Fazer Cadastro -> clicar botão cadastrar -  preencher informações do cadastro.
+
+Entrar no sistma -> preencher campos do login -> clicar botão entrar
+
 Caso de teste Ingresso: Realizar login -> escolher um filme -> escolher uma data -> escolher um dos horários -> sala -> escolher acento* -> realizar pagamento.
 * 1 - verificar se o acento escolhido mudou de estado para ocupado.
 
@@ -37,4 +42,8 @@ Na Listagem de filmes aparecem os botões para deletar ou editar um filme -> Se 
 Caso de teste para comprar Ingresso
 
 Realizar login -> escolher qual cinema deseja -> escolher qual filme que assistar -> selecionar filme -> comprar ingresso.
+
+
+
+
 
