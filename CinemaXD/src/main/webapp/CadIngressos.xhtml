@@ -70,7 +70,7 @@
             var ocupado = #{crudIngresso.ocupado};
             setInterval(function(){
                 if(ocupado){
-                    ocupado = false;
+                    break;
                     alert("Esta poltrona já esta ocupada");
                 }
             },100);
