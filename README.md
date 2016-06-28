@@ -34,3 +34,7 @@ Na Listagem de filmes aparecem os botões para deletar ou editar um filme -> Se 
 
 Na Listagem de filmes aparecem os botões para deletar ou editar um filme -> Se clicar em deletar, o filme automaticamente será deletado da listagem -> obs: os botões de editar só aparecer se for um administrado do sistema -> para ser um administrado cadastre um usuário chamado admin
 
+Caso de teste para comprar Ingresso
+
+Realizar login -> escolher qual cinema deseja -> escolher qual filme que assistar -> selecionar filme -> comprar ingresso.
+
