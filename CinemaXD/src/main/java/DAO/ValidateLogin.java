@@ -33,7 +33,7 @@ public class ValidateLogin implements Serializable {
         try {
 
             l = ConectaBanco.verifyLogin(cli);
-            page = l ? "index" : "login";
+            page = l ? "MenuPrincipalUsuario" : "login";
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);

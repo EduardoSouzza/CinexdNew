@@ -41,7 +41,7 @@ Telefone varchar(254)
 )
 
 CREATE TABLE Ingresso (
-id_engresso BIGSERIAL PRIMARY KEY,
+id_engresso SERIAL PRIMARY KEY,
 id_filme INTEGER,
 Data_filme VARCHAR(254),
 Valor DECIMAL,
@@ -149,7 +149,7 @@ insert into Perfil( id_filme , acao , terror , suspense, animacao , documentario
 values(1 , 5 , 2, 0, 0, 0 , 5 , 3, 2);
 
 insert into filme(nome , diretor, elenco , classificacao, sinopse , duracao ,datalancamento , genero , imagem)
-values('Zootopia – Essa Cidade é o Bicho',' Byron Howard, Rich Moore, Jared Bush',' Jared Bush, Phil Johnston', 10, 
+values('Zootopia',' Byron Howard, Rich Moore, Jared Bush',' Jared Bush, Phil Johnston', 10, 
 'Zootopia é uma cidade diferente de tudo o que você já viu. Formada por "bairros-habitat", como a elegante Praça
  Sahara e a gelada Tundralândia, essa metrópole abriga uma grande diversidade de animais irreverentes sempre
   prontos para encarar uma nova e divertida aventura.Quando Judy Hopps (voz de Monica Iozzi) chega em Zootopia,
@@ -172,7 +172,7 @@ insert into Perfil( id_filme , acao , terror , suspense, animacao , documentario
 values(3 , 3 , 0, 3, 0, 2 , 1 , 3, 5);
 
 insert into filme(nome , diretor, elenco , classificacao, sinopse , duracao ,datalancamento ,genero , imagem)
-values('CAPITÃO AMÉRICA: GUERRA CIVIL',' Anthony Russo, Joe Russo', ' Chris Evans, Robert Downey Jr., Scarlett
+values('CAPITÃO AMÉRICA',' Anthony Russo, Joe Russo', ' Chris Evans, Robert Downey Jr., Scarlett
  Johansson mais..', 12,'Steve Rogers (Chris Evans) é o atual líder dos Vingadores, super-grupo de heróis formado 
  por Viúva Negra (Scarlett Johansson), Feiticeira Escarlate (Elizabeth Olsen), Visão (Paul Bettany), Falcão 
  (Anthony Mackie) e Máquina de Combate (Don Cheadle). O ataque de Ultron fez com que os políticos buscassem 
@@ -184,7 +184,7 @@ insert into Perfil( id_filme , acao , terror , suspense, animacao , documentario
 values(4 , 5 , 0, 3, 0, 3 , 5 , 2, 3);
 
 insert into filme(nome , diretor, elenco , classificacao, sinopse , duracao ,datalancamento ,genero , imagem)
-values('WARCRAFT - O PRIMEIRO ENCONTRO DE DOIS MUNDOS','Duncan Jones', ' Travis Fimmel, Toby Kebbell, Paula Patton mais'
+values('WARCRAFT','Duncan Jones', ' Travis Fimmel, Toby Kebbell, Paula Patton mais'
 , 12, 'A região de Azeroth sempre viveu em paz, até a chegada dos guerreiros Orc. Com a abertura de um portal,
  eles puderam chegar à nova Terra com a intenção de destruir o povo inimigo. Cada lado da batalha possui um 
  grande herói, e os dois travam uma disputa pessoal, colocando em risco seu povo, sua família e todas as pessoas
@@ -195,7 +195,7 @@ values(5 , 5 , 0, 0, 4, 3 , 2 , 3, 4);
 
 
 insert into filme(nome , diretor, elenco , classificacao, sinopse , duracao ,datalancamento ,genero , imagem)
-values('BATMAN VS SUPERMAN - A ORIGEM DA JUSTIÇA',' Zack Snyder', ' Ben Affleck, Henry Cavill, Jesse Eisenberg mais'
+values('BATMAN VS SUPERMAN ',' Zack Snyder', ' Ben Affleck, Henry Cavill, Jesse Eisenberg mais'
 , 12, 'O confronto entre Superman (Henry Cavill) e Zod (Michael Shannon) em Metrópolis fez com que a população 
 mundial se dividisse acerca da existência de extra-terrestres na Terra. Enquanto muitos consideram o Superman
  como um novo deus, há aqueles que consideram extremamente perigoso que haja um ser tão poderoso sem qualquer 
@@ -208,7 +208,7 @@ insert into Perfil( id_filme , acao , terror , suspense, animacao , documentario
 values(6 , 5 , 0, 2, 3, 2 , 2 , 0, 1);
 
 insert into filme(nome , diretor, elenco , classificacao, sinopse , duracao ,datalancamento ,genero , imagem)
-values('MAD MAX: ESTRADA DA FÚRIA',' George Miller', ' Tom Hardy, Charlize Theron, Zoë Kravitz mais'
+values('MAD MAX',' George Miller', ' Tom Hardy, Charlize Theron, Zoë Kravitz mais'
 , 16, 'Após ser capturado por Immortan Joe, um guerreiro das estradas chamado Max (Tom Hardy) se vê no meio de 
 uma guerra mortal, iniciada pela Imperatriz Furiosa (Charlize Theron) na tentativa se salvar um grupo de garotas.
  Também tentanto fugir, Max aceita ajudar Furiosa em sua luta contra Joe e se vê dividido entre mais uma vez 
@@ -243,7 +243,7 @@ insert into Perfil( id_filme , acao , terror , suspense, animacao , documentario
 values(9 , 2 , 0, 0, 0, 0 , 5 , 2, 0);
 
 insert into filme(nome , diretor, elenco , classificacao, sinopse , duracao ,datalancamento ,genero , imagem)
-values('X-MEN: APOCALIPSE',': Bryan Singer', 'James McAvoy, Michael Fassbender, Jennifer Lawrence mais', 12, 
+values('X-MEN: ',': Bryan Singer', 'James McAvoy, Michael Fassbender, Jennifer Lawrence mais', 12, 
 'Também conhecido como Apocalipse, En Sabah Nur (Oscar Isaac) é o mutante original. Após milhares da anos, ele 
 volta a vida disposto a garantir sua supremacia e acabar com a humanidade. Ele seleciona quatro Cavaleiros nas 
 figuras de Magneto (Michael Fassbender), Psylocke (Olivia Munn), Anjo (Ben Hardy) e Tempestade (Alexandra Shipp).

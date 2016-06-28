@@ -34,12 +34,13 @@ public class BeanRecomendacao {
         use.setNome("Karina");
         PerfilCliente p = new PerfilCliente();
         p.setAcao(4);
-        p.setAnimação(2);
-        p.setComedia(3);
-        p.setDocumentario(4);
+        p.setAnimação(4);
+        p.setComedia(5);
+        p.setDocumentario(2);
         p.setDrama(3);
-        p.setRomance(1);
-        p.setTerror(0);
+        p.setRomance(3);
+        p.setTerror(3);
+        
         use.setPerfil(p);
         
         return RecomendacaoFilmes.RecomendaFilmes.recomenda(use);

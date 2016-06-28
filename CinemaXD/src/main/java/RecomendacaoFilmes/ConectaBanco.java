@@ -30,7 +30,7 @@ public class ConectaBanco {
     protected static Connection conectaBanco() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "postgres");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "123");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }
@@ -356,6 +356,7 @@ public class ConectaBanco {
         } catch (Exception e) {
             System.out.println("erroR: " + e);
         }
+    }
 
     public static int getFilmesMaisAssistidos(Filmes fm) {
         int res = 0;
