@@ -1,13 +1,13 @@
 
 CREATE TABLE Cliente (
-id_cliente BIGSERIAL PRIMARY KEY,
+id_cliente SERIAL PRIMARY KEY,
 Nome VARCHAR(254),
 Senha VARCHAR(254),
 Email VARCHAR(254)
 )
 
 CREATE TABLE Filme (
-id_filme BIGSERIAL PRIMARY KEY,
+id_filme SERIAL PRIMARY KEY,
 Nome VARCHAR(254),
 Diretor VARCHAR(254),
 Elenco VARCHAR(254),
@@ -21,7 +21,7 @@ Genero VARCHAR(254)
 
 
 create TABLE Perfil (
-	id_perfil  BIGSERIAL PRIMARY KEY,
+	id_perfil  SERIAL PRIMARY KEY,
 	id_filme INTEGER,
 	Acao INTEGER,
 	Terror INTEGER,
@@ -33,7 +33,7 @@ create TABLE Perfil (
 	FOREIGN KEY(id_filme) REFERENCES Filme (id_filme)
 );
 CREATE TABLE Cinema (
-id_cinema BIGSERIAL PRIMARY KEY,
+id_cinema SERIAL PRIMARY KEY,
 Nome VARCHAR(254),
 Endereco VARCHAR(254),
 Cidade VARCHAR(254),

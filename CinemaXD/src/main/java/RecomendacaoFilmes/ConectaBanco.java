@@ -30,7 +30,7 @@ public class ConectaBanco {
     protected static Connection conectaBanco() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinexd", "postgres", "utfpr");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/CineXD", "postgres", "123");
         } catch (ClassNotFoundException e) {
             throw new SQLException(e.getMessage());
         }
@@ -106,6 +106,7 @@ public class ConectaBanco {
             perfil.setDocumentario(r.getInt("Documentario"));
             perfil.setDrama(r.getInt("Drama"));
             perfil.setRomance(r.getInt("Romance"));
+            perfil.setSuspense(r.getInt("suspense"));
             perfil.setTerror(r.getInt("Terror"));
         }
         return perfil;
@@ -126,6 +127,21 @@ public class ConectaBanco {
             p.setString(8, fm.getGeneros());
             p.setString(9, fm.getImagem());
             p.execute();
+
+            fm = selectFilme(fm.getNome());
+
+            p = c.prepareStatement("insert into perfil (id_filme , acao ,terror , suspense ,animacao , documentario, comedia , romance, drama) values( ? ,?,?,?,?,?,?,?, ?)");
+            p.setInt(1, fm.getId());
+            p.setDouble(2, fm.getPerfil().getAcao());
+            p.setDouble(3, fm.getPerfil().getTerror());
+            p.setDouble(4, fm.getPerfil().getSuspense());
+            p.setDouble(5, fm.getPerfil().getAnimacao());
+            p.setDouble(6, fm.getPerfil().getDocumentario());
+            p.setDouble(7, fm.getPerfil().getComedia());
+            p.setDouble(8, fm.getPerfil().getRomance());
+            p.setDouble(9, fm.getPerfil().getDrama());
+            p.execute();
+
         } catch (Exception e) {
             System.out.println("erroR: " + e);
         }
@@ -218,14 +234,31 @@ public class ConectaBanco {
         return filmes;
     }
 
-    public static void createUsuario(Cliente cli) throws ClassNotFoundException, SQLException {
+    public static void createUsuario(Cliente cli1) throws ClassNotFoundException, SQLException {
         try {
             Connection c = ConectaBanco.conectaBanco();
             PreparedStatement p = c.prepareStatement("insert into Cliente (nome, senha, email) values (?,?,?)");
-            p.setString(1, cli.getNome());
-            p.setString(2, cli.getSenha());
-            p.setString(3, cli.getEmail());
+            p.setString(1, cli1.getNome());
+            p.setString(2, cli1.getSenha());
+            p.setString(3, cli1.getEmail());
+
             p.execute();
+            
+            Cliente cli = getUser(cli1.getNome());
+            
+
+            p = c.prepareStatement("insert into perfil_cliente (id_cliente , acao ,terror , suspense ,animacao , documentario, comedia , romance, drama) values( ? ,?,?,?,?,?,?,?,?)");
+            p.setInt(1, cli.getId_cliente());
+            p.setDouble(2, cli1.getPerfil().getAcao());
+            p.setDouble(3, cli1.getPerfil().getTerror());
+            p.setDouble(4, cli1.getPerfil().getSuspense());
+            p.setDouble(5, cli1.getPerfil().getAnimação());
+            p.setDouble(6, cli1.getPerfil().getDocumentario());
+            p.setDouble(7, cli1.getPerfil().getComedia());
+            p.setDouble(8, cli1.getPerfil().getRomance());
+            p.setDouble(9, cli1.getPerfil().getDrama());
+            p.execute();
+
         } catch (Exception e) {
             System.out.println("erroR: " + e);
         }
@@ -349,8 +382,8 @@ public class ConectaBanco {
             System.out.println("erroR: " + e);
         }
     }
-    
-     public static ArrayList<Ingresso> selectAllIngresso() throws ClassNotFoundException, SQLException {
+
+    public static ArrayList<Ingresso> selectAllIngresso() throws ClassNotFoundException, SQLException {
 
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("SELECT * FROM ingresso");
@@ -358,7 +391,7 @@ public class ConectaBanco {
         ArrayList<Ingresso> listaIngresso = new ArrayList<Ingresso>();
         while (rs.next()) {
             Ingresso in = new Ingresso();
-            in.setIdFilme(Integer.parseInt(rs.getString("id_filme")));            
+            in.setIdFilme(Integer.parseInt(rs.getString("id_filme")));
             in.setDataFilme(rs.getString("data_filme"));
             in.setSala(rs.getInt("sala"));
             in.setPoltrona(rs.getString("poltrona"));
@@ -368,12 +401,12 @@ public class ConectaBanco {
         }
         return listaIngresso;
     }
-    
+
     public static void deleteIngresso(int id) throws ClassNotFoundException, SQLException {
         try {
             Connection c = ConectaBanco.conectaBanco();
             PreparedStatement p = c.prepareStatement("delete from ingresso where id_engresso = ?");
-            p.setInt(1, id);            
+            p.setInt(1, id);
             p.execute();
         } catch (Exception e) {
             System.out.println("erroR: " + e);
@@ -387,8 +420,8 @@ public class ConectaBanco {
             PreparedStatement p = c.prepareStatement("select count(f.nome) as total from filme as f, ingresso i where ? = i.id_filme; ");
             p.setInt(1, fm.getId());
             ResultSet r = p.executeQuery();
-            
-            while(r.next()){
+
+            while (r.next()) {
                 res = r.getInt("total");
             }
         } catch (ClassNotFoundException ex) {
@@ -396,6 +429,8 @@ public class ConectaBanco {
         } catch (SQLException ex) {
             Logger.getLogger(ConectaBanco.class.getName()).log(Level.SEVERE, null, ex);
         }
-                   return res;
+        return res;
     }
+
+    
 }

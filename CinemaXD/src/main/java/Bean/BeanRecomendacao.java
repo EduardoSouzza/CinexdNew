@@ -6,6 +6,7 @@
 package Bean;
 
 
+import RecomendacaoFilmes.ConectaBanco;
 import classes.Cliente;
 import classes.Filmes;
 import classes.PerfilCliente;
@@ -14,6 +15,7 @@ import java.util.List;
 import javax.ejb.SessionContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -22,7 +24,8 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class BeanRecomendacao {
-
+    
+    Cliente cli = new Cliente();
     /**
      * Creates a new instance of jSFFilmes
      */
@@ -30,24 +33,14 @@ public class BeanRecomendacao {
     }
     
     public List<Filmes> getALL() throws ClassNotFoundException, SQLException{
-        Cliente use = new Cliente();
-        use.setId_cliente(1);
-        use.setNome("Karina");
-        PerfilCliente p = new PerfilCliente();
-        p.setAcao(4);
-        p.setAnimação(4);
-        p.setComedia(5);
-        p.setDocumentario(2);
-        p.setDrama(3);
-        p.setRomance(3);
-        p.setTerror(3);
-            
-         
+       
+        return RecomendacaoFilmes.RecomendaFilmes.recomenda(cli);
         
-        use.setPerfil(p);
-        
-        return RecomendacaoFilmes.RecomendaFilmes.recomenda(use);
-        
+    }
+    
+    public String direct(ActionEvent e ,String nome) throws SQLException, ClassNotFoundException{
+        cli = ConectaBanco.getUser(nome);
+        return "TeladeRecomendacao";
     }
     
 }

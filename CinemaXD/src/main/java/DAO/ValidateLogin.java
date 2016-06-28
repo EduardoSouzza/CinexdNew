@@ -35,7 +35,7 @@ public class ValidateLogin implements Serializable {
         boolean l = false;
         String page = "";
         try {
-
+            
             l = ConectaBanco.verifyLogin(cli);
             if (cli.getNome().equals("admin")) {
                 if (l) {
@@ -43,7 +43,7 @@ public class ValidateLogin implements Serializable {
                     admin = true;
                 }
             } else {
-                page = l ? "ListagemCinema" : "login";
+                page = l ? "MenuUsuario" : "login";
                 admin = false;
             }
 

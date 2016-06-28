@@ -17,6 +17,7 @@ public class PerfilCliente {
     private double romance;
     private double documentario;
     private double drama;
+    private double suspense;
     private double animação;
 
     /**
@@ -115,6 +116,20 @@ public class PerfilCliente {
      */
     public void setAnimação(double animação) {
         this.animação = animação;
+    }
+
+    /**
+     * @return the suspense
+     */
+    public double getSuspense() {
+        return suspense;
+    }
+
+    /**
+     * @param suspense the suspense to set
+     */
+    public void setSuspense(double suspense) {
+        this.suspense = suspense;
     }
 
     

@@ -8,8 +8,9 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form id="form"> 
-            <h3>Lista de Filmes Recomendados</h3>
+        <h:form id="form" > 
+            <h3>Lista de Filmes Recomendados  para #{vlLogin.cli.nome}</h3>
+            <h:commandButton class="bt-padrao btnL btRecom" value="#{beanRecomendacao.direct(e, vlLogin.cli.nome)}" />
             <p:separator />
             <p:accordionPanel value="#{beanRecomendacao.ALL}" var="fms">
                 <p:tab title="#{fms.nome}">
@@ -26,11 +27,14 @@
                         <h:outputText value="Classificação: #{fms.classificacao}" />
                         <h:outputText value="Duração: #{fms.duracao}" />
                         <h:outputText value="Genero: #{fms.generos}" />  
-                        <h:commandButton class="bt-padrao btnL" value="Comprar Ingresso"/>
+                        <h:commandButton class="bt-padrao btnL" value="Comprar Ingresso" action="#{crudIngresso.carregarFilme(ae, fms.nome)}"/>
                     </h:panelGrid>
                 </p:tab>
             </p:accordionPanel>
         </h:form>
+        <script>
+            $(".btRecom").hide();
+        </script>
     </h:body>
 </html>
 

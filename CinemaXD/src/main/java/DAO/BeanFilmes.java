@@ -57,6 +57,7 @@ public class BeanFilmes implements Serializable {
     public String inserir(ActionEvent e) {
         try {
             pf.setAcao(acao);
+           
             pf.setAnimacao(animacao);
             pf.setComedia(comedia);
             pf.setDocumentario(documentario);
