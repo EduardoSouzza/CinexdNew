@@ -39,7 +39,6 @@ public class DataGridView implements Serializable {
             //ConectaBanco.selectFilme("Nome do filme");
             filmes = ConectaBanco.selectAllFilmes();
             cinema = ConectaBanco.selectAllCinemas();
-
             /*Filmes nFilme = selectFilme("Marcleo");
             nFilme.setDiretor("novo diretor");
             
