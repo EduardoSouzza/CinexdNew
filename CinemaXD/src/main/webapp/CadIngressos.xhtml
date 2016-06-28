@@ -33,20 +33,20 @@
                         <f:selectItem itemValue="30" itemLabel="30" />
                     </h:selectOneMenu>
                     <br/><br/>
-                    <h:outputLabel class="txt-input" value="POLTRONA:"/>
-                    <h:selectOneRadio value="#{crudIngresso.ingresso.poltrona}">
-                    <f:selectItem itemValue="H5" itemLabel="H5" />
-                    <f:selectItem itemValue="E12" itemLabel="E12" />
-                    <f:selectItem itemValue="K16" itemLabel="K16" />
-                    <f:selectItem itemValue="J3" itemLabel="J3" />
-                    <f:selectItem itemValue="L10" itemLabel="L10" />
+                    <h:outputLabel class="txt-input"  value="POLTRONA:"/>
+                    <h:selectOneRadio value="#{crudIngresso.ingresso.poltrona}" requiredMessage="Selecione uma poltrona*">                                               
+                        <f:selectItem id="H5" itemValue="H5" itemLabel="H5" />
+                        <f:selectItem id="E12" itemValue="E12" itemLabel="E12" />
+                        <f:selectItem id="K16" itemValue="K16" itemLabel="K16" />
+                        <f:selectItem id="J3" itemValue="J3" itemLabel="J3" />
+                        <f:selectItem id="L10" itemValue="L10" itemLabel="L10" />
                     </h:selectOneRadio>
-                    
+
                     <br/><br/>
-                    <!-- validator="#{mobile.validateModelNo}"-->
+
                     <h:outputLabel class="txt-input" value="HORARIO:"/>
-                    
-                    <h:selectOneMenu required="true"  requiredMessage="Selecione uma poltrona*"  value="#{crudIngresso.ingresso.horario}">
+
+                    <h:selectOneMenu required="true" value="#{crudIngresso.ingresso.horario}">
                         <f:selectItem itemValue="10:50" itemLabel="10:50"/>
                         <f:selectItem itemValue="18:40" itemLabel="18:40" />
                         <f:selectItem itemValue="20:10" itemLabel="20:10"/>
@@ -59,12 +59,22 @@
 
                     <br/><br/>
                     <h:commandButton id="btnE" class="bt-padrao" action="#{crudIngresso.comprarIngresso(ae, crudIngresso.filme.nome)}" value="Comprar" />
+
                     <h:commandButton id="btnL" class="bt-padrao" action="index" value="Voltar"/>
-                    
-                    <h:commandButton id="btnC" class="bt-padrao" action="index" value="Relátorio"/>
+
+                    <h:commandButton id="btnC" class="bt-padrao" action="#{crudIngresso.relatorioIngresso(ae)}" value="Relatório"/>
                 </h:panelGrid>                                            
             </div>
         </h:form>
+         <script>           
+            var ocupado = #{crudIngresso.ocupado};
+            setInterval(function(){
+                if(ocupado){
+                    ocupado = false;
+                    alert("Esta poltrona já esta ocupada");
+                }
+            },100);
+        </script>
     </h:body>
 </html>
 

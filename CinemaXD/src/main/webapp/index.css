@@ -20,6 +20,12 @@ and open the template in the editor.
     margin:auto;
 }
 
+.boxRelatorio{
+    position:absolute;
+    margin: auto;
+    left:450px;
+}
+
 .c-input{
     padding: 5px 50px 10px 50px;
     border-radius: 5px;

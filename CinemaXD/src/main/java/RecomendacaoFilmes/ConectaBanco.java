@@ -349,8 +349,8 @@ public class ConectaBanco {
             System.out.println("erroR: " + e);
         }
     }
-    
-     public static ArrayList<Ingresso> selectAllIngresso() throws ClassNotFoundException, SQLException {
+
+    public static ArrayList<Ingresso> selectAllIngresso() throws ClassNotFoundException, SQLException {
 
         Connection c = ConectaBanco.conectaBanco();
         PreparedStatement p = c.prepareStatement("SELECT * FROM ingresso");
@@ -358,22 +358,44 @@ public class ConectaBanco {
         ArrayList<Ingresso> listaIngresso = new ArrayList<Ingresso>();
         while (rs.next()) {
             Ingresso in = new Ingresso();
-            in.setIdFilme(Integer.parseInt(rs.getString("id_filme")));            
+            in.setIdFilme(Integer.parseInt(rs.getString("id_filme")));
             in.setDataFilme(rs.getString("data_filme"));
             in.setSala(rs.getInt("sala"));
             in.setPoltrona(rs.getString("poltrona"));
             in.setHorario(rs.getString("horario"));
-            in.setValor(rs.getDouble("preco"));
+            in.setValor(rs.getDouble("valor"));
             listaIngresso.add(in);
         }
         return listaIngresso;
     }
-    
+
+    public static void ingressoComprado(int idFilme, String data) {
+        try {
+            Connection c = ConectaBanco.conectaBanco();
+            PreparedStatement p = c.prepareStatement("insert into IngressosVendidos (id_filme, Data_filme) values (?,?)");
+            p.setInt(1, idFilme);
+            p.setString(2, data);
+            p.execute();
+        } catch (Exception e) {
+            System.out.println("erroR: " + e);
+        }
+    }
+
+    public static void selectIngressoComprado() {
+        try {
+            Connection c = ConectaBanco.conectaBanco();
+            PreparedStatement p = c.prepareStatement("Select * from IngressosVendidos");            
+            p.execute();
+        } catch (Exception e) {
+            System.out.println("erroR: " + e);
+        }
+    }
+
     public static void deleteIngresso(int id) throws ClassNotFoundException, SQLException {
         try {
             Connection c = ConectaBanco.conectaBanco();
             PreparedStatement p = c.prepareStatement("delete from ingresso where id_engresso = ?");
-            p.setInt(1, id);            
+            p.setInt(1, id);
             p.execute();
         } catch (Exception e) {
             System.out.println("erroR: " + e);
@@ -387,8 +409,8 @@ public class ConectaBanco {
             PreparedStatement p = c.prepareStatement("select count(f.nome) as total from filme as f, ingresso i where ? = i.id_filme; ");
             p.setInt(1, fm.getId());
             ResultSet r = p.executeQuery();
-            
-            while(r.next()){
+
+            while (r.next()) {
                 res = r.getInt("total");
             }
         } catch (ClassNotFoundException ex) {
@@ -396,6 +418,6 @@ public class ConectaBanco {
         } catch (SQLException ex) {
             Logger.getLogger(ConectaBanco.class.getName()).log(Level.SEVERE, null, ex);
         }
-                   return res;
+        return res;
     }
 }

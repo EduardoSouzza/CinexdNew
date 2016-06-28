@@ -11,9 +11,23 @@
     </h:head>
     <h:body class="background-cad">
         <span>
-            
+            <h2><div class="txt-Cadastro">Relatorio de Ingressos</div></h2>
         </span>
+        <h:form class="boxRelatorio">
+            <h:dataTable class="cad-center" >
+                <div >
+                    <h:column>
+                        <f:facet name="header">ID  </f:facet> 
+                        #{crudIngresso.testeRelatorio.id}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">   TOTAL</f:facet> 
+                            #{crudIngresso.testeRelatorio.total}
+                    </h:column>
+                </div>
+            </h:dataTable>
+            <h:commandButton id="btnE" class="bt-padrao" action="CadIngressos" value="Voltar" />
         </h:form>
     </h:body>
 </html>
-

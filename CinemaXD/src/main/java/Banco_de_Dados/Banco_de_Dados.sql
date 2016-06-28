@@ -18,8 +18,6 @@ DataLancamento VARCHAR(254),
 Genero VARCHAR(254)
 );
 
-
-
 create TABLE Perfil (
 	id_perfil  BIGSERIAL PRIMARY KEY,
 	id_filme INTEGER,
@@ -39,14 +37,23 @@ Endereco VARCHAR(254),
 Cidade VARCHAR(254),
 Telefone varchar(254)
 )
+drop table Ingresso cascade;
 
 CREATE TABLE Ingresso (
 id_engresso SERIAL PRIMARY KEY,
 id_filme INTEGER,
 Data_filme VARCHAR(254),
-Valor DECIMAL,
+Sala INTEGER,
+Poltrona VARCHAR(3),
+Horario VARCHAR(5),
+Valor DOUBLE PRECISION,
 FOREIGN KEY(id_filme) REFERENCES Filme (id_filme)
 )
+
+CREATE TABLE IngressosVendidos(
+idVendido SERIAL PRIMARY KEY,
+id_filme INTEGER, 
+Data_filme VARCHAR(254));
 
 CREATE TABLE Compras (
 id_compras BIGSERIAL PRIMARY KEY,
