@@ -396,23 +396,13 @@ public class ConectaBanco {
             in.setSala(rs.getInt("sala"));
             in.setPoltrona(rs.getString("poltrona"));
             in.setHorario(rs.getString("horario"));
-            in.setValor(rs.getDouble("preco"));
+            in.setValor(rs.getDouble("valor"));
             listaIngresso.add(in);
         }
         return listaIngresso;
     }
 
-    public static void deleteIngresso(int id) throws ClassNotFoundException, SQLException {
-        try {
-            Connection c = ConectaBanco.conectaBanco();
-            PreparedStatement p = c.prepareStatement("delete from ingresso where id_engresso = ?");
-            p.setInt(1, id);
-            p.execute();
-        } catch (Exception e) {
-            System.out.println("erroR: " + e);
-        }
-    }
-
+   
     public static int getFilmesMaisAssistidos(Filmes fm) {
         int res = 0;
         try {
