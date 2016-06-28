@@ -26,3 +26,11 @@ Fluxo alternativo 2: Realizar login -> escolher um filme -> comprar um ingresso 
 Fluxo alternativo 3: Realizar login -> escolher um filme -> comprar um ingresso -> clicar no botão comprar de um produto -> se quantidade igual a 0 -> mensagem: quantidade indisponível.
 Fluxo alternativo 4: Realizar login -> escolher um filme -> comprar um ingresso -> clicar no botão adicionar ao combo várias vezes -> verificar com o usuário se deseja todos os produtos adicionados -> se sim, compra realizada ao clicar no botão finalizar -> se não, cancelar compra.
 
+Crud de Filmes
+
+Clicar no botão Crud Cadastro está no menu depois de realizar login -> Preencher os campos para cadastro filmes -> clicar no botão cadastrar -> se estiver tudo ok, cadastrado com sucesso.
+
+Na Listagem de filmes aparecem os botões para deletar ou editar um filme -> Se clicar em editar, as informações serão carregadas em uma tela de cadastra novas informaões -> clicar em salvar para editar com sucesso
+
+Na Listagem de filmes aparecem os botões para deletar ou editar um filme -> Se clicar em deletar, o filme automaticamente será deletado da listagem -> obs: os botões de editar só aparecer se for um administrado do sistema -> para ser um administrado cadastre um usuário chamado admin
+
