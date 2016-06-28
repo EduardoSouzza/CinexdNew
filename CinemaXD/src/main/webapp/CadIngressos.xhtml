@@ -15,30 +15,44 @@
             <div class="cad-center">
                 <h:panelGrid columns="3">
                     <h:outputLabel class="txt-input" value="FILME" />
-                    <h:outputText id="nomeFilme" value="#{crudIngresso.filme.nome}" />
-
-                    <!--<h:outputLabel class="txt-input" value="FILME:"/>
-                    <h:inputText id="nome" class="c-input" size="20" />
-                    <h:message for="nome" />-->
-                    <h:outputLabel class="txt-input" value="DATA"/>
-                    <h:inputText class="txt-input"  value="#{crudIngresso.ingresso.dataFilme}">
-                        <!--<f:convertDateTime />-->
-                    </h:inputText>
-                    <h:message for="data" />
-
+                    <h:outputText id="nomeFilme" value="#{crudIngresso.filme.nome}" />                  
+                    <br/><br/>
+                    <h:outputLabel class="txt-input" value="DATA"/>                        
+                    <h:selectOneMenu value="#{crudIngresso.ingresso.dataFilme}">
+                        <f:selectItem itemValue="05/06/16" itemLabel="05/06/16" />
+                        <f:selectItem itemValue="13/02/09" itemLabel="13/02/09" />
+                        <f:selectItem itemValue="16/09/15" itemLabel="16/09/15"/>
+                        <f:selectItem itemValue="27/10/14" itemLabel="27/10/14" />
+                    </h:selectOneMenu>
+                    <br/><br/>
                     <h:outputLabel class="txt-input" value="SALA"/>
-                    <h:inputText id="sala" class="c-input" size="20" value="#{crudIngresso.ingresso.sala}"/>
-                    <h:message for="sala" />
-
+                    <h:selectOneMenu value="#{crudIngresso.ingresso.sala}">
+                        <f:selectItem itemValue="4" itemLabel="4" />
+                        <f:selectItem itemValue="11" itemLabel="11" />
+                        <f:selectItem itemValue="17" itemLabel="17"/>
+                        <f:selectItem itemValue="30" itemLabel="30" />
+                    </h:selectOneMenu>
+                    <br/><br/>
                     <h:outputLabel class="txt-input" value="POLTRONA:"/>
-                    <h:inputText id="mun" class="c-input" size="20" value="#{crudIngresso.ingresso.poltrona}"/>
-                    <h:message for="mun" />
-
+                    <h:selectOneRadio value="#{crudIngresso.ingresso.poltrona}">
+                    <f:selectItem itemValue="H5" itemLabel="H5" />
+                    <f:selectItem itemValue="E12" itemLabel="E12" />
+                    <f:selectItem itemValue="K16" itemLabel="K16" />
+                    <f:selectItem itemValue="J3" itemLabel="J3" />
+                    <f:selectItem itemValue="L10" itemLabel="L10" />
+                    </h:selectOneRadio>
+                    
+                    <br/><br/>
+                    <!-- validator="#{mobile.validateModelNo}"-->
                     <h:outputLabel class="txt-input" value="HORARIO:"/>
-                    <h:inputText class="txt-input" value="#{crudIngresso.ingresso.horario}">
-                        <!--<f:convertDateTime type="time" />-->
-                    </h:inputText>
-                    <h:message for="horario" />
+                    
+                    <h:selectOneMenu required="true"  requiredMessage="Selecione uma poltrona*"  value="#{crudIngresso.ingresso.horario}">
+                        <f:selectItem itemValue="10:50" itemLabel="10:50"/>
+                        <f:selectItem itemValue="18:40" itemLabel="18:40" />
+                        <f:selectItem itemValue="20:10" itemLabel="20:10"/>
+                        <f:selectItem itemValue="22:25" itemLabel="22:25" />
+                    </h:selectOneMenu>
+                    <br/><br/>
 
                     <h:outputLabel class="txt-input" value="VALOR: R$"/>
                     <h:outputLabel id="valor" class="c-input" value="#{crudIngresso.ingresso.valor}"/>
@@ -46,6 +60,8 @@
                     <br/><br/>
                     <h:commandButton id="btnE" class="bt-padrao" action="#{crudIngresso.comprarIngresso(ae, crudIngresso.filme.nome)}" value="Comprar" />
                     <h:commandButton id="btnL" class="bt-padrao" action="index" value="Voltar"/>
+                    
+                    <h:commandButton id="btnC" class="bt-padrao" action="index" value="Relátorio"/>
                 </h:panelGrid>                                            
             </div>
         </h:form>

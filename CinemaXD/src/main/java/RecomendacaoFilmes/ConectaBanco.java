@@ -347,6 +347,25 @@ public class ConectaBanco {
         }
     }
     
+     public static ArrayList<Ingresso> selectAllIngresso() throws ClassNotFoundException, SQLException {
+
+        Connection c = ConectaBanco.conectaBanco();
+        PreparedStatement p = c.prepareStatement("SELECT * FROM ingresso");
+        ResultSet rs = p.executeQuery();
+        ArrayList<Ingresso> listaIngresso = new ArrayList<Ingresso>();
+        while (rs.next()) {
+            Ingresso in = new Ingresso();
+            in.setIdFilme(Integer.parseInt(rs.getString("id_filme")));            
+            in.setDataFilme(rs.getString("data_filme"));
+            in.setSala(rs.getInt("sala"));
+            in.setPoltrona(rs.getString("poltrona"));
+            in.setHorario(rs.getString("horario"));
+            in.setValor(rs.getDouble("preco"));
+            listaIngresso.add(in);
+        }
+        return listaIngresso;
+    }
+    
     public static void deleteIngresso(int id) throws ClassNotFoundException, SQLException {
         try {
             Connection c = ConectaBanco.conectaBanco();

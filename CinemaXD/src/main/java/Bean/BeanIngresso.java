@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package Bean;
 
 import RecomendacaoFilmes.ConectaBanco;
 import classes.Ingresso;
@@ -20,12 +20,12 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "crudIngresso")
 @SessionScoped
-public class CrudIngresso {
+public class BeanIngresso {
 
     Ingresso ingresso = new Ingresso();
     Filmes filme = new Filmes();
 
-    public CrudIngresso() {
+    public BeanIngresso() {
         ingresso.setValor(20.5);
     }
 

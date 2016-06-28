@@ -37,14 +37,21 @@
             <version>9.1-901-1.jdbc4</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.2.0.Final</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.2-1003-jdbc3</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>5.3</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.0.Final</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
