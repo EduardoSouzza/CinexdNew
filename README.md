@@ -51,7 +51,7 @@ Caso de teste para comprar Ingresso
 
 Realizar login -> escolher qual cinema deseja -> escolher qual filme que assistar -> selecionar filme -> comprar ingresso.
 
-
+Realizar login como administrador > escolher cinema -> escolher filme -> comprar ingresso -> montar combo ou não -> comprar ou não -> menu administrador ->  Gerar Relatório de vendas.
 
 
 
