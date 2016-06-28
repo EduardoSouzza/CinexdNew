@@ -62,18 +62,21 @@
 
                     <h:commandButton id="btnL" class="bt-padrao" action="index" value="Voltar"/>
 
-                    <h:commandButton id="btnC" class="bt-padrao" action="#{crudIngresso.relatorioIngresso(ae)}" value="Relatório"/>
+                    <h:commandButton id="btnC" class="bt-padrao"   action="#{crudIngresso.relatorioIngresso(ae)}" value="Relatório"/>
                 </h:panelGrid>                                            
             </div>
         </h:form>
-         <script>           
-            var ocupado = #{crudIngresso.ocupado};
-            setInterval(function(){
-                if(ocupado){
-                    break;
-                    alert("Esta poltrona já esta ocupada");
-                }
-            },100);
+        <script>           
+            setInterval(function () {
+                
+                /*if (s) {
+                    var ocupado = 1;
+                            console.log(ocupado);
+                    if (ocupado === 1) {
+                        alert("Esta poltrona já esta ocupada");
+                    }
+                }*/
+            }, 500);
         </script>
     </h:body>
 </html>

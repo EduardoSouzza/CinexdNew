@@ -29,34 +29,36 @@ public class BeanIngresso {
 
     private int total = 0;
     private int identificador;
-    boolean ocupado = false;
+    private boolean ocupado = false;
     Ingresso ingresso = new Ingresso();
     Filmes filme = new Filmes();
-    Teste testeRelatorio = new Teste();
+    Teste testeRelatorio = new Teste();           
     ArrayList<Ingresso> listaIngresso = new ArrayList<Ingresso>();
     ArrayList<Teste> listaRelatorio = new ArrayList<Teste>();
 
     public BeanIngresso() {
         ingresso.setValor(20.5);
         ingresso.setPoltrona("H5");
+        ocupado = false;
+        testeRelatorio.setId(0);
     }
 
     public String comprarIngresso(ActionEvent ae, String nomeFilme) throws ClassNotFoundException, SQLException {
         listaIngresso = ConectaBanco.selectAllIngresso();
-        ocupado = true;
-        for (int i = 0; i < listaIngresso.size(); i++) {             
-            if((listaIngresso.get(i).getPoltrona()) == (ingresso.getPoltrona())
-                    && (listaIngresso.get(i).getDataFilme() == ingresso.getDataFilme())
+        
+        for (int i = 0; i < listaIngresso.size(); i++) {
+            if((listaIngresso.get(i).getPoltrona()).equals(ingresso.getPoltrona())
+                    && (listaIngresso.get(i).getDataFilme().equals( ingresso.getDataFilme()))
                     && (listaIngresso.get(i).getSala() == ingresso.getSala())
-                    && (listaIngresso.get(i).getHorario()== ingresso.getHorario())){                    
+                    && (listaIngresso.get(i).getHorario().equals( ingresso.getHorario()))){                    
+                    testeRelatorio.setId(1);
                     ocupado = true;
             }
-        }
-        filme = ConectaBanco.selectFilme(nomeFilme);
+        }        
         ingresso.setIdFilme(filme.getId());
         ConectaBanco.createIngresso(ingresso);
-        ConectaBanco.ingressoComprado(filme.getId(), ingresso.getDataFilme());
-        return "index";
+        //ConectaBanco.ingressoComprado(filme.getId(), ingresso.getDataFilme());
+        return "Ticket?faces-redirect=true";
     }
 
     public Ingresso getIngresso() {
@@ -75,7 +77,7 @@ public class BeanIngresso {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return "CadIngressos";
+        return "CadIngressos?faces-redirect=true";
     }
 
     public Filmes getFilme() {
@@ -108,7 +110,7 @@ public class BeanIngresso {
 
     public void setTesteRelatorio(Teste testeRelatorio) {
         this.testeRelatorio = testeRelatorio;
-    }
+    }       
 
     public boolean isOcupado() {
         return ocupado;
@@ -117,12 +119,9 @@ public class BeanIngresso {
     public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
     }
-    
-    
 
     public String relatorioIngresso(ActionEvent ae) throws ClassNotFoundException, SQLException {
-        try {
-            //Retornou todos ingressos comprados
+        try {            
             listaIngresso = ConectaBanco.selectAllIngresso();
             identificador = listaIngresso.get(0).getIdFilme();
             for (int i = 0; i < listaIngresso.size(); i++) {
@@ -138,9 +137,4 @@ public class BeanIngresso {
         }
         return "Relatorios";
     }
-
-    public void checkedSelectOneRadioValue(FacesContext context, UIComponent component, Object value) throws ValidationException {
-
-    }
-
 }
