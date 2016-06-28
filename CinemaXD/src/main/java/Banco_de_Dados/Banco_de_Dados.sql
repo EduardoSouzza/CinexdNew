@@ -37,7 +37,6 @@ Endereco VARCHAR(254),
 Cidade VARCHAR(254),
 Telefone varchar(254)
 )
-drop table Ingresso cascade;
 
 CREATE TABLE Ingresso (
 id_engresso SERIAL PRIMARY KEY,
