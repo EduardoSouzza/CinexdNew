@@ -11,6 +11,7 @@ import classes.Filmes;
 import classes.PerfilCliente;
 import java.sql.SQLException;
 import java.util.List;
+import javax.ejb.SessionContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -40,6 +41,8 @@ public class BeanRecomendacao {
         p.setDrama(3);
         p.setRomance(3);
         p.setTerror(3);
+            
+         
         
         use.setPerfil(p);
         

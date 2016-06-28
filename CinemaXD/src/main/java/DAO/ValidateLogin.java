@@ -7,6 +7,7 @@ package DAO;
 
 import RecomendacaoFilmes.ConectaBanco;
 import classes.Cliente;
+import classes.SessionUtils;
 import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -15,9 +16,11 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean(name = "vlLogin")
-@RequestScoped
+@SessionScoped
 public class ValidateLogin implements Serializable {
 
     Cliente cli = new Cliente();
@@ -33,7 +36,13 @@ public class ValidateLogin implements Serializable {
         try {
 
             l = ConectaBanco.verifyLogin(cli);
-            page = l ? "MenuPrincipalUsuario" : "login";
+            if (l){
+                HttpSession session = SessionUtils.getSession();
+		session.setAttribute("username", cli);
+                page = "MenuPrincipalUsuario";
+            }else{
+                page = "login";
+            }
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(BeanCliente.class.getName()).log(Level.SEVERE, null, ex);
